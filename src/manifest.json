@@ -1,0 +1,18 @@
+{
+  "manifest_version": 2,
+  "name": "Medium Unlocker",
+  "version": "__VERSION__",
+  "description": "Read Medium content without limit!",
+  "icons": {
+    "48": "favicon.png"
+  },
+  "content_scripts": [
+    {
+      "matches": [],
+      "js": ["background.js"]
+    }
+  ],
+  "content_security_policy": "script-src 'self'; object-src 'self'",
+  "permissions": ["webRequest", "webRequestBlocking", "cookies"],
+  "web_accessible_resources": ["*"]
+}
