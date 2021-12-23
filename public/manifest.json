@@ -6,6 +6,11 @@
   "icons": {
     "48": "favicon.png"
   },
+  "background": {
+    "scripts": [
+      "background.js"
+    ]
+  },
   "content_scripts": [
     {
       "matches": [
@@ -43,7 +48,7 @@
         "https://ux.shopify.com/*"
       ],
       "js": [
-        "background.js"
+        "content.js"
       ]
     }
   ],

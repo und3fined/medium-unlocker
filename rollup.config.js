@@ -17,28 +17,28 @@ function serve() {
   return {
     writeBundle() {
       if (server) return;
-      server = require("child_process").spawn(
-        "npm",
-        ["run", "start", "--", "--dev"],
-        {
-          stdio: ["ignore", "inherit", "inherit"],
-          shell: true,
-        }
-      );
+      // server = require("child_process").spawn(
+      //   "npm",
+      //   ["run", "start", "--", "--dev"],
+      //   {
+      //     stdio: ["ignore", "inherit", "inherit"],
+      //     shell: true,
+      //   }
+      // );
 
-      process.on("SIGTERM", toExit);
-      process.on("exit", toExit);
+      // process.on("SIGTERM", toExit);
+      // process.on("exit", toExit);
     },
   };
 }
 
-export default {
-  input: "src/main.js",
+export default ['background', 'content'].map((name, index) => ({
+  input: `src/${name}.js`,
   output: {
     sourcemap: true,
     format: "iife",
-    name: "app",
-    file: "public/background.js",
+    name: name,
+    file: `public/${name}.js`,
   },
   plugins: [
     svelte({
@@ -77,4 +77,4 @@ export default {
   watch: {
     clearScreen: false,
   },
-};
+}));

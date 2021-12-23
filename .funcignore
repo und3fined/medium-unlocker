@@ -1,0 +1,13 @@
+*.js.map
+*.ts
+.git*
+.vscode
+local.settings.json
+test
+tsconfig.json
+src
+scripts
+public
+.editorconfig
+README.md
+package-lock.json
