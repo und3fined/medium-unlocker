@@ -281,7 +281,7 @@ var background = (function () {
    * File Created: 22 Dec 2021 14:17:58
    * Author: und3fined (me@und3fined.com)
    * -----
-   * Last Modified: 23 Dec 2021 17:26:57
+   * Last Modified: 23 Dec 2021 17:36:31
    * Modified By: und3fined (me@und3fined.com)
    * -----
    * Copyright (c) 2021 und3fined.com
@@ -398,6 +398,18 @@ var background = (function () {
     return { requestHeaders };
   }
 
+  function handleResponse({ url, requestId, requestHeaders }) {
+    if (url.endsWith(mediumGraphql) === false || needPatch.includes(requestId) === false) {
+      return { requestHeaders };
+    }
+
+    let newHeaders = requestHeaders.filter(
+      ({ name }) => name.toLowerCase() !== "set-cookie"
+    );
+
+    return {responseHeaders: newHeaders};
+  }
+
   function handleMessage({ request }, sender, sendResponse) {
     if (request === "fetch-cookie") {
       fetchCookie();
@@ -418,6 +430,12 @@ var background = (function () {
 
   chrome.webRequest.onBeforeSendHeaders.addListener(
     rewriteUserAgentHeader,
+    { urls: domainList },
+    getBeforeSendExtraInfoSpec()
+  );
+
+  chrome.webRequest.onHeadersReceived.addListener(
+    handleResponse,
     { urls: domainList },
     getBeforeSendExtraInfoSpec()
   );
