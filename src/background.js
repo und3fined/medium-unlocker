@@ -4,7 +4,7 @@
  * File Created: 22 Dec 2021 14:17:58
  * Author: und3fined (me@und3fined.com)
  * -----
- * Last Modified: 23 Dec 2021 20:52:18
+ * Last Modified: 23 Dec 2021 20:58:56
  * Modified By: und3fined (me@und3fined.com)
  * -----
  * Copyright (c) 2021 und3fined.com
@@ -61,25 +61,6 @@ function fetchCookie() {
   }
 }
 
-// function handleBeforeRequest(e) {
-//   if (e.url.endsWith(mediumGraphql) === false) {
-//     return {};
-//   }
-
-//   try {
-//     const requestBody = e.requestBody.raw[0];
-//     var postedString = decodeURIComponent(
-//       String.fromCharCode.apply(null, new Uint8Array(requestBody.bytes))
-//     );
-//     if (postedString.includes(`"operationName":"${postDetailType}"`)) {
-//       needPatch.push(e.requestId);
-//     }
-//   } catch (err) {
-//   }
-
-//   return {};
-// }
-
 function getBeforeSendExtraInfoSpec() {
   const extraInfoSpec = ["blocking", "requestHeaders"];
   if (
@@ -91,6 +72,9 @@ function getBeforeSendExtraInfoSpec() {
 }
 
 function rewriteUserAgentHeader({ url, requestId, requestHeaders }) {
+
+  console.info('rewriteUserAgentHeader', url);
+
   if (url.endsWith(mediumGraphql) === false) {
     return { requestHeaders };
   }
@@ -98,6 +82,8 @@ function rewriteUserAgentHeader({ url, requestId, requestHeaders }) {
   const operation = requestHeaders.filter(
     ({ name }) => name.toLowerCase() === "graphql-operation"
   );
+
+  console.info('rewriteUserAgentHeader', operation);
 
   if (!operation.length || (operation.length && operation[0].value !== postDetailType)) {
     return { requestHeaders };
@@ -113,6 +99,8 @@ function rewriteUserAgentHeader({ url, requestId, requestHeaders }) {
   );
 
   if (cookieHeader.length === 1) {
+    console.info('cookieTemp', cookieTemp);
+
     let newCookie = decodeURIComponent(cookieHeader[0].value);
     newCookie = newCookie.replace(/uid=(\w+);/, `uid=${cookieTemp.uid || ''};`);
     newCookie = newCookie.replace(/sid=(.{0,100});/, `sid=${encodeURIComponent(cookieTemp.sid || '')};`);
@@ -170,4 +158,3 @@ chrome.webRequest.onHeadersReceived.addListener(
   { urls: domainList },
   ["blocking", "responseHeaders"]
 )
-
