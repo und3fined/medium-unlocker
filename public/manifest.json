@@ -1,10 +1,13 @@
 {
   "manifest_version": 2,
   "name": "Medium Unlocker",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Read Medium content without limit!",
   "icons": {
-    "48": "favicon.png"
+    "48": "medium-48.png",
+    "64": "medium-64.png",
+    "128": "medium-128.png",
+    "256": "medium-256.png"
   },
   "background": {
     "scripts": [

@@ -75,7 +75,7 @@ var content = (function () {
    * File Created: 23 Dec 2021 10:33:39
    * Author: und3fined (me@und3fined.com)
    * -----
-   * Last Modified: 23 Dec 2021 17:09:15
+   * Last Modified: 23 Dec 2021 20:35:23
    * Modified By: und3fined (me@und3fined.com)
    * -----
    * Copyright (c) 2021 und3fined.com
@@ -112,7 +112,9 @@ var content = (function () {
     console.error(err);
   }
 
-  document.body.style.border = "5px solid red";
+  chrome.runtime.sendMessage({ request: "fetch-cookie" });
+
+  // document.body.style.border = "5px solid red";
 
   var content = {
 

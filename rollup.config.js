@@ -35,7 +35,7 @@ function serve() {
 export default ['background', 'content'].map((name, index) => ({
   input: `src/${name}.js`,
   output: {
-    sourcemap: true,
+    sourcemap: !production,
     format: "iife",
     name: name,
     file: `public/${name}.js`,

@@ -4,7 +4,7 @@
  * File Created: 22 Dec 2021 14:17:58
  * Author: und3fined (me@und3fined.com)
  * -----
- * Last Modified: 23 Dec 2021 17:40:31
+ * Last Modified: 23 Dec 2021 20:43:33
  * Modified By: und3fined (me@und3fined.com)
  * -----
  * Copyright (c) 2021 und3fined.com
@@ -45,12 +45,13 @@ function remoteCookie() {
 }
 
 function fetchCookie() {
+  console.info('fetchCookie')
   try {
     if (cookieFetching) return;
     cookieFetching = true;
 
     chrome.storage.local.get(['unlocker'], function(result) {
-      if (!result['unlocker']) remoteCookie();
+      if (!result['unlocker'] || result['unlocker'].unlocksRemaining < 1) remoteCookie();
       else {
         cookieFetching = false;
         cookieTemp = result['unlocker']
@@ -61,24 +62,24 @@ function fetchCookie() {
   }
 }
 
-function handleBeforeRequest(e) {
-  if (e.url.endsWith(mediumGraphql) === false) {
-    return {};
-  }
+// function handleBeforeRequest(e) {
+//   if (e.url.endsWith(mediumGraphql) === false) {
+//     return {};
+//   }
 
-  try {
-    const requestBody = e.requestBody.raw[0];
-    var postedString = decodeURIComponent(
-      String.fromCharCode.apply(null, new Uint8Array(requestBody.bytes))
-    );
-    if (postedString.includes(`"operationName":"${postDetailType}"`)) {
-      needPatch.push(e.requestId);
-    }
-  } catch (err) {
-  }
+//   try {
+//     const requestBody = e.requestBody.raw[0];
+//     var postedString = decodeURIComponent(
+//       String.fromCharCode.apply(null, new Uint8Array(requestBody.bytes))
+//     );
+//     if (postedString.includes(`"operationName":"${postDetailType}"`)) {
+//       needPatch.push(e.requestId);
+//     }
+//   } catch (err) {
+//   }
 
-  return {};
-}
+//   return {};
+// }
 
 function getBeforeSendExtraInfoSpec() {
   const extraInfoSpec = ["blocking", "requestHeaders"];
@@ -91,9 +92,19 @@ function getBeforeSendExtraInfoSpec() {
 }
 
 function rewriteUserAgentHeader({ url, requestId, requestHeaders }) {
-  if (url.endsWith(mediumGraphql) === false || needPatch.includes(requestId) === false) {
+  if (url.endsWith(mediumGraphql) === false) {
     return { requestHeaders };
   }
+
+  const operation = requestHeaders.filter(
+    ({ name }) => name.toLowerCase() === "graphql-operation"
+  );
+
+  if (!operation.length || (operation.length && operation[0].value !== postDetailType)) {
+    return { requestHeaders };
+  }
+
+  needPatch.push(requestId)
 
   let newHeaders = requestHeaders.filter(
     ({ name }) => name.toLowerCase() !== "cookie"
@@ -105,13 +116,16 @@ function rewriteUserAgentHeader({ url, requestId, requestHeaders }) {
   if (cookieHeader.length === 1) {
     let newCookie = decodeURIComponent(cookieHeader[0].value);
 
+    console.info('cookieTemp', cookieTemp);
+
     newCookie = newCookie.replace(/uid=(\w+);/, `uid=${cookieTemp.uid || ''};`);
-    newCookie = newCookie.replace(/sid=(.{0,100});/, `sid=${cookieTemp.sid || ''};`);
+    newCookie = newCookie.replace(/sid=(.{0,100});/, `sid=${encodeURIComponent(cookieTemp.sid || '')};`);
     newCookie = newCookie.replace(
       /optimizelyEndUserId=(\w+);/,
       `optimizelyEndUserId=${cookieTemp.optimizelyEndUserId || ''};`
     );
-    newHeaders.push({ name: "cookie", value: encodeURIComponent(newCookie) });
+
+    newHeaders.push({ name: "cookie", value: newCookie });
 
     cookieTemp.unlocksRemaining -= 1;
 
@@ -145,11 +159,11 @@ function handleMessage({ request }, sender, sendResponse) {
 
 chrome.runtime.onMessage.addListener(handleMessage);
 
-chrome.webRequest.onBeforeRequest.addListener(
-  handleBeforeRequest,
-  { urls: domainList },
-  ["blocking", "requestBody"]
-);
+// chrome.webRequest.onBeforeRequest.addListener(
+//   handleBeforeRequest,
+//   { urls: domainList },
+//   ["blocking", "requestBody"]
+// );
 
 chrome.webRequest.onBeforeSendHeaders.addListener(
   rewriteUserAgentHeader,
@@ -162,3 +176,4 @@ chrome.webRequest.onHeadersReceived.addListener(
   { urls: domainList },
   ["blocking", "responseHeaders"]
 )
+
