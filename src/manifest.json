@@ -16,6 +16,6 @@
     }
   ],
   "content_security_policy": "script-src 'self'; object-src 'self'",
-  "permissions": ["webRequest", "webRequestBlocking", "cookies"],
+  "permissions": ["storage", "webRequest", "webRequestBlocking"],
   "web_accessible_resources": ["*"]
 }

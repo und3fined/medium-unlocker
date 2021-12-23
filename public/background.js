@@ -210,47 +210,216 @@ var background = (function () {
   };
 
   /**
+   * File: constants.js
+   * Project: svelte-app
+   * File Created: 22 Dec 2021 14:22:09
+   * Author: und3fined (me@und3fined.com)
+   * -----
+   * Last Modified: 23 Dec 2021 16:50:34
+   * Modified By: und3fined (me@und3fined.com)
+   * -----
+   * Copyright (c) 2021 und3fined.com
+   */
+  var operationName = {
+    cookieStatus: 'PostMeter',
+    postContent: 'PostViewerEdgeContentQuery'
+  };
+
+  var operationSelector = {
+    cookieStatus: 'data.meterPost.unlocksRemaining'
+  };
+
+  var memberShipId = 'paywall-fewerClicksHeading';
+  var registerWall = 'regwall-heading';
+
+  var domainList$1 = [
+    "https://medium.com/*",
+    "https://*.medium.com/*",
+    "https://towardsdatascience.com/*",
+    "https://hackernoon.com/*",
+    "https://medium.freecodecamp.org/*",
+    "https://psiloveyou.xyz/*",
+    "https://betterhumans.coach.me/*",
+    "https://codeburst.io/*",
+    "https://theascent.pub/*",
+    "https://medium.mybridge.co/*",
+    "https://uxdesign.cc/*",
+    "https://levelup.gitconnected.com/*",
+    "https://itnext.io/*",
+    "https://entrepreneurshandbook.co/*",
+    "https://proandroiddev.com/*",
+    "https://blog.prototypr.io/*",
+    "https://thebolditalic.com/*",
+    "https://blog.usejournal.com/*",
+    "https://blog.angularindepth.com/*",
+    "https://blog.bitsrc.io/*",
+    "https://blog.devartis.com/*",
+    "https://blog.maddevs.io/*",
+    "https://blog.getambassador.io/*",
+    "https://uxplanet.org/*",
+    "https://instagram-engineering.com/*",
+    "https://calia.me/*",
+    "https://productcoalition.com/*",
+    "https://engineering.opsgenie.com/*",
+    "https://android.jlelse.eu/*",
+    "https://robinhood.engineering/*",
+    "https://blog.hipolabs.com/*",
+    "https://ux.shopify.com/*",
+  ];
+
+  var constants = {
+  	operationName: operationName,
+  	operationSelector: operationSelector,
+  	memberShipId: memberShipId,
+  	registerWall: registerWall,
+  	domainList: domainList$1
+  };
+
+  /**
    * File: background.js
    * Project: svelte-app
    * File Created: 22 Dec 2021 14:17:58
    * Author: und3fined (me@und3fined.com)
    * -----
-   * Last Modified: 23 Dec 2021 14:38:45
+   * Last Modified: 23 Dec 2021 17:26:57
    * Modified By: und3fined (me@und3fined.com)
    * -----
    * Copyright (c) 2021 und3fined.com
    */
 
-  const cookiePage = 'https://medium-unlocker.azurewebsites.net/api/medium-unlocker';
-  const mediumUrls = [`*://medium.com/*`];
+  const { domainList } = constants;
 
-  function fetchCookie() {
-    return fetch(cookiePage).then(resp => resp.json()).then(data => {
-      cookie.parse(data["set-cookie"].join('; '));
+  const cookiePage =
+    "https://medium-unlocker.azurewebsites.net/api/medium-unlocker";
+  const mediumGraphql = "/_/graphql";
+  const postDetailType = "PostViewerEdgeContentQuery";
+
+  let cookieFetching = false;
+  let cookieTemp = {
+    unlocksRemaining: 0
+  };
+  let needPatch = [];
+
+  function remoteCookie() {
+    cookieFetching = true;
+
+    return fetch(cookiePage)
+    .then(resp => resp.json())
+    .then(data => {
+      const cookies = cookie.parse(data["set-cookie"].join("; "));
+      cookieTemp.uid = cookies.uid;
+      cookieTemp.sid = cookies.sid;
+      cookieTemp.optimizelyEndUserId = cookies.optimizelyEndUserId;
+      cookieTemp.unlocksRemaining = 3;
+    })
+    .finally(() => {
+      //save to storage
+      chrome.storage.local.set({
+        unlocker: cookieTemp
+      });
+      cookieFetching = false;
     });
   }
 
-  function rewriteUserAgentHeader(e) {
-    return { requestHeaders: e.requestHeaders };
+  function fetchCookie() {
+    try {
+      if (cookieFetching) return;
+      cookieFetching = true;
+
+      chrome.storage.local.get(['unlocker'], function(result) {
+        if (!result['unlocker']) remoteCookie();
+        else {
+          cookieFetching = false;
+          cookieTemp = result['unlocker'];
+        }
+      });
+    } catch (err) {
+      console.error(err);
+    }
   }
 
-  function watchNofity(message) {
-    const { request } = message;
+  function handleBeforeRequest(e) {
+    if (e.url.endsWith(mediumGraphql) === false) {
+      return {};
+    }
 
+    try {
+      const requestBody = e.requestBody.raw[0];
+      var postedString = decodeURIComponent(
+        String.fromCharCode.apply(null, new Uint8Array(requestBody.bytes))
+      );
+      if (postedString.includes(`"operationName":"${postDetailType}"`)) {
+        needPatch.push(e.requestId);
+      }
+    } catch (err) {
+    }
+
+    return {};
+  }
+
+  function getBeforeSendExtraInfoSpec() {
+    const extraInfoSpec = ["blocking", "requestHeaders"];
+    if (
+      chrome.webRequest.OnBeforeSendHeadersOptions.hasOwnProperty("EXTRA_HEADERS")
+    ) {
+      extraInfoSpec.push("extraHeaders");
+    }
+    return extraInfoSpec;
+  }
+
+  function rewriteUserAgentHeader({ url, requestId, requestHeaders }) {
+    if (url.endsWith(mediumGraphql) === false || needPatch.includes(requestId) === false) {
+      return { requestHeaders };
+    }
+
+    let newHeaders = requestHeaders.filter(
+      ({ name }) => name.toLowerCase() !== "cookie"
+    );
+    const cookieHeader = requestHeaders.filter(
+      ({ name }) => name.toLowerCase() === "cookie"
+    );
+
+    if (cookieHeader.length === 1) {
+      let newCookie = decodeURIComponent(cookieHeader[0].value);
+
+      newCookie = newCookie.replace(/uid=(\w+);/, `uid=${cookieTemp.uid || ''};`);
+      newCookie = newCookie.replace(/sid=(.{0,100});/, `sid=${cookieTemp.sid || ''};`);
+      newCookie = newCookie.replace(
+        /optimizelyEndUserId=(\w+);/,
+        `optimizelyEndUserId=${cookieTemp.optimizelyEndUserId || ''};`
+      );
+      newHeaders.push({ name: "cookie", value: encodeURIComponent(newCookie) });
+
+      cookieTemp.unlocksRemaining -= 1;
+
+      chrome.storage.local.set({unlocker: cookieTemp});
+      return { requestHeaders: newHeaders };
+    }
+    return { requestHeaders };
+  }
+
+  function handleMessage({ request }, sender, sendResponse) {
     if (request === "fetch-cookie") {
       fetchCookie();
     }
 
-
+    if (request === "get-cookie") {
+      sendResponse({ response: request, data: cookieTemp });
+    }
   }
 
+  chrome.runtime.onMessage.addListener(handleMessage);
 
-  browser.runtime.onMessage.addListener(watchNofity);
+  chrome.webRequest.onBeforeRequest.addListener(
+    handleBeforeRequest,
+    { urls: domainList },
+    ["blocking", "requestBody"]
+  );
 
   chrome.webRequest.onBeforeSendHeaders.addListener(
     rewriteUserAgentHeader,
-    { urls: mediumUrls },
-    ["blocking", "requestHeaders"]
+    { urls: domainList },
+    getBeforeSendExtraInfoSpec()
   );
 
   var background = {

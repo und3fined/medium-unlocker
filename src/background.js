@@ -4,49 +4,143 @@
  * File Created: 22 Dec 2021 14:17:58
  * Author: und3fined (me@und3fined.com)
  * -----
- * Last Modified: 23 Dec 2021 14:38:45
+ * Last Modified: 23 Dec 2021 17:26:57
  * Modified By: und3fined (me@und3fined.com)
  * -----
  * Copyright (c) 2021 und3fined.com
  */
-const cookie = require('cookie');
+const cookie = require("cookie");
+const { domainList } = require('./constants');
 
-const cookiePage = 'https://medium-unlocker.azurewebsites.net/api/medium-unlocker';
-const mediumUrls = [`*://medium.com/*`];
-const mediumGraphql = 'https://medium.com/_/graphql';
-const cookieStatusType = 'PostMeter';
-const postDetailType = 'PostViewerEdgeContentQuery';
+const cookiePage =
+  "https://medium-unlocker.azurewebsites.net/api/medium-unlocker";
+const mediumGraphql = "/_/graphql";
+const postDetailType = "PostViewerEdgeContentQuery";
 
-const cookieTemp = {};
+let cookieFetching = false;
+let cookieTemp = {
+  unlocksRemaining: 0
+};
+let needPatch = [];
 
-function fetchCookie() {
-  return fetch(cookiePage).then(resp => resp.json()).then(data => {
-    const cookies = cookie.parse(data["set-cookie"].join('; '))
+function remoteCookie() {
+  cookieFetching = true;
+
+  return fetch(cookiePage)
+  .then(resp => resp.json())
+  .then(data => {
+    const cookies = cookie.parse(data["set-cookie"].join("; "));
     cookieTemp.uid = cookies.uid;
     cookieTemp.sid = cookies.sid;
     cookieTemp.optimizelyEndUserId = cookies.optimizelyEndUserId;
+    cookieTemp.unlocksRemaining = 3;
+  })
+  .finally(() => {
+    //save to storage
+    chrome.storage.local.set({
+      unlocker: cookieTemp
+    });
+    cookieFetching = false;
   });
 }
 
-function rewriteUserAgentHeader(e) {
-  return { requestHeaders: e.requestHeaders };
+function fetchCookie() {
+  try {
+    if (cookieFetching) return;
+    cookieFetching = true;
+
+    chrome.storage.local.get(['unlocker'], function(result) {
+      if (!result['unlocker']) remoteCookie();
+      else {
+        cookieFetching = false;
+        cookieTemp = result['unlocker']
+      }
+    });
+  } catch (err) {
+    console.error(err);
+  }
 }
 
-function watchNofity(message) {
-  const { request } = message;
-
-  if (request === "fetch-cookie") {
-    fetchCookie()
+function handleBeforeRequest(e) {
+  if (e.url.endsWith(mediumGraphql) === false) {
+    return {};
   }
 
+  try {
+    const requestBody = e.requestBody.raw[0];
+    var postedString = decodeURIComponent(
+      String.fromCharCode.apply(null, new Uint8Array(requestBody.bytes))
+    );
+    if (postedString.includes(`"operationName":"${postDetailType}"`)) {
+      needPatch.push(e.requestId);
+    }
+  } catch (err) {
+  }
 
+  return {};
 }
 
+function getBeforeSendExtraInfoSpec() {
+  const extraInfoSpec = ["blocking", "requestHeaders"];
+  if (
+    chrome.webRequest.OnBeforeSendHeadersOptions.hasOwnProperty("EXTRA_HEADERS")
+  ) {
+    extraInfoSpec.push("extraHeaders");
+  }
+  return extraInfoSpec;
+}
 
-browser.runtime.onMessage.addListener(watchNofity);
+function rewriteUserAgentHeader({ url, requestId, requestHeaders }) {
+  if (url.endsWith(mediumGraphql) === false || needPatch.includes(requestId) === false) {
+    return { requestHeaders };
+  }
+
+  let newHeaders = requestHeaders.filter(
+    ({ name }) => name.toLowerCase() !== "cookie"
+  );
+  const cookieHeader = requestHeaders.filter(
+    ({ name }) => name.toLowerCase() === "cookie"
+  );
+
+  if (cookieHeader.length === 1) {
+    let newCookie = decodeURIComponent(cookieHeader[0].value);
+
+    newCookie = newCookie.replace(/uid=(\w+);/, `uid=${cookieTemp.uid || ''};`);
+    newCookie = newCookie.replace(/sid=(.{0,100});/, `sid=${cookieTemp.sid || ''};`);
+    newCookie = newCookie.replace(
+      /optimizelyEndUserId=(\w+);/,
+      `optimizelyEndUserId=${cookieTemp.optimizelyEndUserId || ''};`
+    );
+    newHeaders.push({ name: "cookie", value: encodeURIComponent(newCookie) });
+
+    cookieTemp.unlocksRemaining -= 1;
+
+    chrome.storage.local.set({unlocker: cookieTemp});
+    return { requestHeaders: newHeaders };
+  }
+  return { requestHeaders };
+}
+
+function handleMessage({ request }, sender, sendResponse) {
+  if (request === "fetch-cookie") {
+    fetchCookie();
+  }
+
+  if (request === "get-cookie") {
+    sendResponse({ response: request, data: cookieTemp });
+  }
+}
+
+chrome.runtime.onMessage.addListener(handleMessage);
+
+chrome.webRequest.onBeforeRequest.addListener(
+  handleBeforeRequest,
+  { urls: domainList },
+  ["blocking", "requestBody"]
+);
 
 chrome.webRequest.onBeforeSendHeaders.addListener(
   rewriteUserAgentHeader,
-  { urls: mediumUrls },
-  ["blocking", "requestHeaders"]
+  { urls: domainList },
+  getBeforeSendExtraInfoSpec()
 );

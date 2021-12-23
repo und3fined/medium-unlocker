@@ -54,9 +54,9 @@
   ],
   "content_security_policy": "script-src 'self'; object-src 'self'",
   "permissions": [
+    "storage",
     "webRequest",
     "webRequestBlocking",
-    "cookies",
     "https://medium.com/*",
     "https://*.medium.com/*",
     "https://towardsdatascience.com/*",

@@ -4,7 +4,7 @@
  * File Created: 22 Dec 2021 14:22:09
  * Author: und3fined (me@und3fined.com)
  * -----
- * Last Modified: 23 Dec 2021 14:39:23
+ * Last Modified: 23 Dec 2021 16:50:34
  * Modified By: und3fined (me@und3fined.com)
  * -----
  * Copyright (c) 2021 und3fined.com
@@ -17,6 +17,9 @@ exports.operationName = {
 exports.operationSelector = {
   cookieStatus: 'data.meterPost.unlocksRemaining'
 }
+
+exports.memberShipId = 'paywall-fewerClicksHeading';
+exports.registerWall = 'regwall-heading';
 
 exports.domainList = [
   "https://medium.com/*",
