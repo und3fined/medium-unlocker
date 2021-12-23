@@ -4,7 +4,7 @@
  * File Created: 22 Dec 2021 14:17:58
  * Author: und3fined (me@und3fined.com)
  * -----
- * Last Modified: 23 Dec 2021 20:43:33
+ * Last Modified: 23 Dec 2021 20:52:18
  * Modified By: und3fined (me@und3fined.com)
  * -----
  * Copyright (c) 2021 und3fined.com
@@ -45,7 +45,6 @@ function remoteCookie() {
 }
 
 function fetchCookie() {
-  console.info('fetchCookie')
   try {
     if (cookieFetching) return;
     cookieFetching = true;
@@ -115,9 +114,6 @@ function rewriteUserAgentHeader({ url, requestId, requestHeaders }) {
 
   if (cookieHeader.length === 1) {
     let newCookie = decodeURIComponent(cookieHeader[0].value);
-
-    console.info('cookieTemp', cookieTemp);
-
     newCookie = newCookie.replace(/uid=(\w+);/, `uid=${cookieTemp.uid || ''};`);
     newCookie = newCookie.replace(/sid=(.{0,100});/, `sid=${encodeURIComponent(cookieTemp.sid || '')};`);
     newCookie = newCookie.replace(
@@ -126,9 +122,7 @@ function rewriteUserAgentHeader({ url, requestId, requestHeaders }) {
     );
 
     newHeaders.push({ name: "cookie", value: newCookie });
-
     cookieTemp.unlocksRemaining -= 1;
-
     chrome.storage.local.set({unlocker: cookieTemp});
     return { requestHeaders: newHeaders };
   }
