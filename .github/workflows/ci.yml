@@ -18,8 +18,8 @@ jobs:
         RELEASE_VERSION: ${{ steps.vars.outputs.tag }}
       run: |
         cp LICENSE public/
-        zip -r extension.zip public/
-        echo ::set-output name=package_name::extension.zip
+        mv public medium-unlocker
+        zip -r medium-unlocker.zip medium-unlocker/
     - name: Publish release
       uses: marvinpinto/action-automatic-releases@latest
       env:
@@ -28,4 +28,4 @@ jobs:
         repo_token: "${{ secrets.GITHUB_TOKEN }}"
         prerelease: false
         files: |
-          extension.zip
+          medium-unlocker.zip
