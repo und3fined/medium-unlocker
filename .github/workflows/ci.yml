@@ -13,7 +13,14 @@ jobs:
     - name: Get version
       id: vars
       run: echo ::set-output name=tag::${GITHUB_REF#refs/*/}
-    - name: Make release
+    - name: Package extension for release
+      env:
+        RELEASE_VERSION: ${{ steps.vars.outputs.tag }}
+      run: |
+        cp LICENSE public/
+        zip -r extension.zip public/
+        echo ::set-output name=package_name::extension.zip
+    - name: Publish release
       uses: marvinpinto/action-automatic-releases@latest
       env:
         RELEASE_VERSION: ${{ steps.vars.outputs.tag }}
@@ -21,5 +28,4 @@ jobs:
         repo_token: "${{ secrets.GITHUB_TOKEN }}"
         prerelease: false
         files: |
-          LICENSE
-          public/*
+          extension.zip
