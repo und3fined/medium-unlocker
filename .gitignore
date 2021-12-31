@@ -99,3 +99,6 @@ __queuestorage__
 __azurite_db*__.json
 
 .DS_Store
+public/background.js
+public/content.js.map
+public/index.html

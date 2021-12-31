@@ -58,7 +58,6 @@
   ],
   "content_security_policy": "script-src 'self'; object-src 'self'",
   "permissions": [
-    "storage",
     "webRequest",
     "webRequestBlocking",
     "https://medium.com/*",
@@ -94,8 +93,5 @@
     "https://blog.hipolabs.com/*",
     "https://ux.shopify.com/*",
     "https://enlear.academy/*"
-  ],
-  "web_accessible_resources": [
-    "*"
   ]
 }
