@@ -1,4 +1,6 @@
-# Medium Unlocker [![build status][build-badge]][build]
+# Medium Unlocker
+
+[![build status][build-badge]][build]
 
 [build]: https://github.com/und3fined/medium-unlocker/actions?query=workflow%3Abuild
 
