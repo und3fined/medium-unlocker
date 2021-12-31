@@ -48,7 +48,8 @@
         "https://android.jlelse.eu/*",
         "https://robinhood.engineering/*",
         "https://blog.hipolabs.com/*",
-        "https://ux.shopify.com/*"
+        "https://ux.shopify.com/*",
+        "https://enlear.academy/*"
       ],
       "js": [
         "content.js"
@@ -91,7 +92,8 @@
     "https://android.jlelse.eu/*",
     "https://robinhood.engineering/*",
     "https://blog.hipolabs.com/*",
-    "https://ux.shopify.com/*"
+    "https://ux.shopify.com/*",
+    "https://enlear.academy/*"
   ],
   "web_accessible_resources": [
     "*"

@@ -1,45 +1,30 @@
 /**
- * File: content.js
+ * File: main.js
  * Project: medium-unlocker
- * File Created: 23 Dec 2021 10:33:39
+ * File Created: 19 Nov 2021 19:34:40
  * Author: und3fined (me@und3fined.com)
  * -----
- * Last Modified: 23 Dec 2021 20:35:23
+ * Last Modified: 31 Dec 2021 21:26:27
  * Modified By: und3fined (me@und3fined.com)
  * -----
  * Copyright (c) 2021 und3fined.com
  */
-const { memberShipId, registerWall } = require("./constants");
+import App from "./App.svelte";
 
-function handleResponse(message) {
-  const { data } = message;
-  if (data && data.unlocksRemaining <= 0) {
-    chrome.runtime.sendMessage({ request: "fetch-cookie" });
+const mediumUnlockerId = "mediumUnlocker";
+const unlockerElm = document.getElementById(mediumUnlockerId);
+
+if (!unlockerElm) {
+  const newUnlockerElm = document.createElement("div");
+  newUnlockerElm.setAttribute("id", mediumUnlockerId);
+  document.body.appendChild(newUnlockerElm);
+}
+
+const app = new App({
+  target: unlockerElm,
+  props: {
+    name: 'Medium Unlocker'
   }
-}
+});
 
-function fetchCookie() {
-  const sending = chrome.runtime.sendMessage({ request: "get-cookie" });
-  return sending.then(handleResponse, () => {});
-}
-
-function unlockerListener() {
-  setInterval(() => {
-    const hasUpgradePrompt = !!document.getElementById(memberShipId) || !!document.getElementById(registerWall);
-    if (hasUpgradePrompt) {
-      fetchCookie().then(() => {
-        window.location.reload();
-      });
-    }
-  }, 3000);
-}
-
-try {
-  unlockerListener();
-} catch (err) {
-  console.error(err);
-}
-
-chrome.runtime.sendMessage({ request: "fetch-cookie" });
-
-// document.body.style.border = "5px solid red";
+export default app;

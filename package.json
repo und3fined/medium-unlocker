@@ -3,7 +3,6 @@
   "version": "0.0.2",
   "private": true,
   "scripts": {
-    "start": "func start",
     "build": "rollup -c",
     "dev": "rollup -c -w",
     "manifest": "node scripts/manifest.js"
@@ -19,9 +18,6 @@
     "svelte": "^3.0.0"
   },
   "dependencies": {
-    "cookie": "^0.4.1",
-    "selectn": "^1.1.2",
-    "sirv-cli": "^1.0.0",
-    "user-agents": "^1.0.873"
+    "sirv-cli": "^1.0.0"
   }
 }

@@ -3,7 +3,6 @@ import commonjs from "@rollup/plugin-commonjs";
 import resolve from "@rollup/plugin-node-resolve";
 import livereload from "rollup-plugin-livereload";
 import { terser } from "rollup-plugin-terser";
-import css from "rollup-plugin-css-only";
 
 const production = !process.env.ROLLUP_WATCH;
 
@@ -16,18 +15,7 @@ function serve() {
 
   return {
     writeBundle() {
-      if (server) return;
-      // server = require("child_process").spawn(
-      //   "npm",
-      //   ["run", "start", "--", "--dev"],
-      //   {
-      //     stdio: ["ignore", "inherit", "inherit"],
-      //     shell: true,
-      //   }
-      // );
-
-      // process.on("SIGTERM", toExit);
-      // process.on("exit", toExit);
+      return;
     },
   };
 }
@@ -47,9 +35,6 @@ export default ['background', 'content'].map((name, index) => ({
         dev: !production,
       },
     }),
-    // we'll extract any component CSS out into
-    // a separate file - better for performance
-    css({ output: "bundle.css" }),
 
     // If you have external dependencies installed from
     // npm, you'll most likely need these plugins. In

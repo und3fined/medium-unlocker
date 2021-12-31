@@ -4,7 +4,7 @@
  * File Created: 22 Dec 2021 14:22:09
  * Author: und3fined (me@und3fined.com)
  * -----
- * Last Modified: 23 Dec 2021 16:50:34
+ * Last Modified: 31 Dec 2021 19:42:41
  * Modified By: und3fined (me@und3fined.com)
  * -----
  * Copyright (c) 2021 und3fined.com
@@ -54,4 +54,5 @@ exports.domainList = [
   "https://robinhood.engineering/*",
   "https://blog.hipolabs.com/*",
   "https://ux.shopify.com/*",
+  "https://enlear.academy/*",
 ];
