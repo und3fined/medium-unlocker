@@ -3,9 +3,13 @@ Medium Unlocker
 
 Read Medium content without limit!
 
+### Get more infomation
+
+Please visit [Wiki page](https://github.com/und3fined/medium-unlocker/wiki)
+
 ### How to get Extension/Addons?
 
-- Firefox -> https://addons.mozilla.org/vi/firefox/addon/medium-unlocker
+- Firefox -> https://addons.mozilla.org/firefox/addon/medium-unlocker
 - Chrome -> wait for publish!
 
 ### Features
