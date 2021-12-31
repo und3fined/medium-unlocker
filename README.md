@@ -1,4 +1,6 @@
-# Medium Unlocker [![Actions Status](https://github.com/und3fined/medium-unlocker/workflows/build/badge.svg)](https://github.com/und3fined/medium-unlocker/actions)
+# Medium Unlocker [![Actions Status](https://github.com/und3fined/medium-unlocker/workflows/build/badge.svg)](https://github.com/und3fined/medium-unlocker/actions) 
+
+[![GiveMeACoffee](https://img.shields.io/badge/give%20me%20a%20coffee-Paypal-blue)](https://paypal.me/und3fined)
 
 Read Medium content without limit! Aka replacer for Medium Unlimited.
 
