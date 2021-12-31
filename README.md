@@ -1,8 +1,4 @@
-# Medium Unlocker
-
-[![build status][build-badge]][build]
-
-[build]:https://github.com/und3fined/medium-unlocker/actions?query=workflow%3Abuild
+# Medium Unlocker ![example workflow](https://github.com/und3fined/medium-unlocker/actions/workflows/ci.yml/badge.svg)
 
 Read Medium content without limit! Aka replacer for Medium Unlimited.
 
