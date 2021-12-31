@@ -13,10 +13,13 @@ jobs:
     - name: Get version
       id: vars
       run: echo ::set-output name=tag::${GITHUB_REF#refs/*/}
-    - uses: "marvinpinto/action-automatic-releases@latest"
-        with:
-          repo_token: "${{ secrets.GITHUB_TOKEN }}"
-          prerelease: false
-          files: |
-            LICENSE
-            public/*
+    - name: Make release
+      uses: marvinpinto/action-automatic-releases@latest
+      env:
+        RELEASE_VERSION: ${{ steps.vars.outputs.tag }}
+      with:
+        repo_token: "${{ secrets.GITHUB_TOKEN }}"
+        prerelease: false
+        files: |
+          LICENSE
+          public/*
