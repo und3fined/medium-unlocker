@@ -1,6 +1,4 @@
-# Medium Unlocker ![example workflow](https://github.com/und3fined/medium-unlocker/actions/workflows/ci.yml/badge.svg)
-
-[![Actions Status](https://github.com/und3fined/medium-unlocker/workflows/build/badge.svg)](https://github.com/und3fined/medium-unlocker/actions)
+# Medium Unlocker [![Actions Status](https://github.com/und3fined/medium-unlocker/workflows/build/badge.svg)](https://github.com/und3fined/medium-unlocker/actions)
 
 Read Medium content without limit! Aka replacer for Medium Unlimited.
 
