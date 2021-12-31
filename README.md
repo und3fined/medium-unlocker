@@ -16,4 +16,4 @@ Read Medium content without limit!
 
 - Q: How to report bug?/How to add more domain?
 
- -> Create new issue
+Create new issue
