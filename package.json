@@ -1,6 +1,6 @@
 {
   "name": "medium-unlocker",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": true,
   "scripts": {
     "build": "rollup -c",
@@ -9,6 +9,7 @@
     "git:tag": "git commit -am \"patch version v$npm_package_version\" && git tag -a v$npm_package_version -m \"patch version v$npm_package_version\"",
     "git:push": "git push --follow-tags",
     "git:exec": "npm run git:tag --scripts-prepend-node-path && npm run git:push --scripts-prepend-node-path",
+    "preversion": "yarn build",
     "postversion": "npm run manifest --scripts-prepend-node-path && npm run git:exec --scripts-prepend-node-path"
   },
   "devDependencies": {
