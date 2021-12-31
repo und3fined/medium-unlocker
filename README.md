@@ -2,7 +2,7 @@
 
 [![build status][build-badge]][build]
 
-[build]: https://github.com/und3fined/medium-unlocker/actions?query=workflow%3Abuild
+[build]:https://github.com/und3fined/medium-unlocker/actions?query=workflow%3Abuild
 
 Read Medium content without limit! Aka replacer for Medium Unlimited.
 
