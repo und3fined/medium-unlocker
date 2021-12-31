@@ -6,7 +6,7 @@ Read Medium content without limit! Aka replacer for Medium Unlimited.
 
 Please visit [Wiki page](https://github.com/und3fined/medium-unlocker/wiki)
 
-### How to get Extension/Addons?
+### How to install Extension/Addons?
 
 - Firefox -> https://addons.mozilla.org/firefox/addon/medium-unlocker
 - Chrome/Edge -> https://github.com/und3fined/medium-unlocker/wiki/Install-extesion-for-Chromium-(base)-browser%3F
