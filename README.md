@@ -2,7 +2,7 @@
 
 Read Medium content without limit! Aka replacer for Medium Unlimited.
 
-### Get more infomation
+### Get more information
 
 Please visit [Wiki page](https://github.com/und3fined/medium-unlocker/wiki)
 
