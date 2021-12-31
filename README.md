@@ -1,7 +1,7 @@
 Medium Unlocker
 ================
 
-Read Medium content without limit!
+Read Medium content without limit! Aka replacer for Medium Unlimited.
 
 ### Get more infomation
 
