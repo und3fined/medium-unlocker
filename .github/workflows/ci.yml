@@ -1,8 +1,8 @@
+name: build
 on:
   push:
     tags:
       - 'v*.*.*'
-
 jobs:
   deploy:
     name: Initial for release
