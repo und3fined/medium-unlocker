@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "Medium Unlocker",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Read Medium content without limit!",
   "icons": {
     "48": "medium-48.png",
@@ -49,7 +49,8 @@
         "https://robinhood.engineering/*",
         "https://blog.hipolabs.com/*",
         "https://ux.shopify.com/*",
-        "https://enlear.academy/*"
+        "https://enlear.academy/*",
+        "https://www.cantorsparadise.com/*"
       ],
       "js": [
         "content.js"
@@ -92,6 +93,7 @@
     "https://robinhood.engineering/*",
     "https://blog.hipolabs.com/*",
     "https://ux.shopify.com/*",
-    "https://enlear.academy/*"
+    "https://enlear.academy/*",
+    "https://www.cantorsparadise.com/*"
   ]
 }
