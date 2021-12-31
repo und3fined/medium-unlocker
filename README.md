@@ -21,3 +21,8 @@ Please visit [Wiki page](https://github.com/und3fined/medium-unlocker/wiki)
 - Q: How to report bug?/How to add more domain?
 
 Create new issue
+
+
+### Screenshot
+
+![Github](https://user-images.githubusercontent.com/2163878/147834338-dc43fa34-a850-4e28-9b6b-c9c28bc8bfdf.png)
