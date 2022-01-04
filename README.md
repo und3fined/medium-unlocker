@@ -1,15 +1,22 @@
 # Medium Unlocker [![Actions Status](https://github.com/und3fined/medium-unlocker/workflows/build/badge.svg)](https://github.com/und3fined/medium-unlocker/actions)  [![GiveMeACoffee](https://img.shields.io/badge/Give%20Me%20a%20Coffee!-Paypal-blue)](https://paypal.me/und3fined)
 
+<p align="center">
+  <a href="https://addons.mozilla.org/firefox/addon/medium-unlocker" target="_blank">
+    <img width="149" height="48" src="https://github.com/und3fined/medium-unlocker/blob/main/badges/Firefox.png?raw=true">
+  </a>
+  <a href="https://microsoftedge.microsoft.com/addons/detail/medium-unlocker/fdnjgkpbbjgmolfhobejeoglagepngpe" target="_blank">
+    <img width="186" height="48" src="https://github.com/und3fined/medium-unlocker/blob/main/badges/Edge.png?raw=true">
+  </a>
+</p>
+
 Read Medium content without limit! Aka replacer for Medium Unlimited.
+
 
 ### Get more information
 
 Please visit [Wiki page](https://github.com/und3fined/medium-unlocker/wiki)
 
-### How to install Extension/Addons?
-
-[![Firefox Addons](https://github.com/und3fined/medium-unlocker/blob/main/badges/Firefox.png?raw=true)](https://addons.mozilla.org/firefox/addon/medium-unlocker)
-[![Edge Addons](https://github.com/und3fined/medium-unlocker/blob/main/badges/Edge.png?raw=true)](https://microsoftedge.microsoft.com/addons/detail/medium-unlocker/fdnjgkpbbjgmolfhobejeoglagepngpe)
+### How to install Extensions?
 
 - Chrome -> https://github.com/und3fined/medium-unlocker/wiki/Install-extension-for-Chromium-(base)-browser
 
