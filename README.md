@@ -8,9 +8,10 @@ Please visit [Wiki page](https://github.com/und3fined/medium-unlocker/wiki)
 
 ### How to install Extension/Addons?
 
-[![Firefox Addons](https://ffp4g1ylyit3jdyti1hqcvtb-wpengine.netdna-ssl.com/addons/files/2015/11/get-the-addon-small.png)](https://addons.mozilla.org/firefox/addon/medium-unlocker)
+[![Firefox Addons](https://github.com/und3fined/medium-unlocker/blob/main/badges/Firefox.png?raw=true)](https://addons.mozilla.org/firefox/addon/medium-unlocker)
+[![Edge Addons](https://github.com/und3fined/medium-unlocker/blob/main/badges/Edge.png?raw=true)](https://microsoftedge.microsoft.com/addons/detail/medium-unlocker/fdnjgkpbbjgmolfhobejeoglagepngpe)
 
-- Chrome/Edge -> https://github.com/und3fined/medium-unlocker/wiki/Install-extension-for-Chromium-(base)-browser
+- Chrome -> https://github.com/und3fined/medium-unlocker/wiki/Install-extension-for-Chromium-(base)-browser
 
 ### Features
 
