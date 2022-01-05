@@ -4,7 +4,7 @@
  * File Created: 22 Dec 2021 14:22:09
  * Author: und3fined (me@und3fined.com)
  * -----
- * Last Modified: 01 Jan 2022 00:19:48
+ * Last Modified: 05 Jan 2022 09:35:49
  * Modified By: und3fined (me@und3fined.com)
  * -----
  * Copyright (c) 2021 und3fined.com
@@ -56,5 +56,9 @@ exports.domainList = [
   "https://ux.shopify.com/*",
   "https://enlear.academy/*",
   "https://www.cantorsparadise.com/*",
-  "https://betterprogramming.pub/*"
+  "https://betterprogramming.pub/*",
+  "https://blog.roost.io/*",
+  "https://500ish.com/*",
+  "https://faun.pub/*",
+  "https://towardsdev.com/*"
 ];
