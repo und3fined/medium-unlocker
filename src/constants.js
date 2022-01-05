@@ -4,7 +4,7 @@
  * File Created: 22 Dec 2021 14:22:09
  * Author: und3fined (me@und3fined.com)
  * -----
- * Last Modified: 05 Jan 2022 09:35:49
+ * Last Modified: 05 Jan 2022 16:27:34
  * Modified By: und3fined (me@und3fined.com)
  * -----
  * Copyright (c) 2021 und3fined.com
@@ -60,5 +60,6 @@ exports.domainList = [
   "https://blog.roost.io/*",
   "https://500ish.com/*",
   "https://faun.pub/*",
-  "https://towardsdev.com/*"
+  "https://towardsdev.com/*",
+  "https://javascript.plainenglish.io/*"
 ];
