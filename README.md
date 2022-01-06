@@ -19,10 +19,6 @@ Read Medium content without limit! Aka replacer for Medium Unlimited.
 
 Please visit [Wiki page](https://github.com/und3fined/medium-unlocker/wiki)
 
-### How to install Extensions?
-
-- Chrome -> https://github.com/und3fined/medium-unlocker/wiki/Install-extension-for-Chromium-(base)-browser
-
 ### Features
 
 - Unlock graphql version of medium.com
