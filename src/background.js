@@ -4,7 +4,7 @@
  * File Created: 22 Dec 2021 14:17:58
  * Author: und3fined (me@und3fined.com)
  * -----
- * Last Modified: 31 Dec 2021 21:18:27
+ * Last Modified: 12 Jan 2022 23:42:22
  * Modified By: und3fined (me@und3fined.com)
  * -----
  * Copyright (c) 2021 und3fined.com
@@ -18,7 +18,7 @@ const {
 } = require("./utils");
 
 const mediumGraphql = "/_/graphql";
-const postDetailType = "PostViewerEdgeContentQuery";
+const postDetailType = ["PostViewerEdgeContentQuery", "PostHandler"];
 
 let needPatch = [];
 
@@ -27,14 +27,12 @@ function rewriteCookieHeader({ url, requestId, requestHeaders }) {
     return { requestHeaders };
   }
 
-  const operation = requestHeaders.filter(
+  const operations = requestHeaders.filter(
     ({ name }) => name.toLowerCase() === "graphql-operation"
   );
 
-  if (
-    !operation.length ||
-    (operation.length && operation[0].value !== postDetailType)
-  ) {
+
+  if (!operations.length || (operations.length && !postDetailType.includes(operations[0].value))) {
     return { requestHeaders };
   }
 
@@ -49,8 +47,14 @@ function rewriteCookieHeader({ url, requestId, requestHeaders }) {
 
     let newCookie = decodeURIComponent(cookieHeader[0].value);
     newCookie = newCookie.replace(/uid=(\w+);/, `uid=${uid};`);
-    newCookie = newCookie.replace(/sid=(.{0,72});/, `sid=${encodeURIComponent(sid)};`);
-    newCookie = newCookie.replace(/optimizelyEndUserId=(\w+);/, `optimizelyEndUserId=${uid};`);
+    newCookie = newCookie.replace(
+      /sid=(.{0,72});/,
+      `sid=${encodeURIComponent(sid)};`
+    );
+    newCookie = newCookie.replace(
+      /optimizelyEndUserId=(\w+);/,
+      `optimizelyEndUserId=${uid};`
+    );
     newHeaders.push({ name: "cookie", value: newCookie });
     return { requestHeaders: newHeaders };
   }
@@ -63,7 +67,11 @@ function handleResponse({ requestId, responseHeaders }) {
     return { responseHeaders };
   }
 
-  const newHeaders = getHeaders(responseHeaders, "set-cookie", (a, b) => a !== b);
+  const newHeaders = getHeaders(
+    responseHeaders,
+    "set-cookie",
+    (a, b) => a !== b
+  );
 
   return { responseHeaders: newHeaders };
 }
