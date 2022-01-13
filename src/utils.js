@@ -4,7 +4,7 @@
  * File Created: 23 Dec 2021 11:12:59
  * Author: und3fined (me@und3fined.com)
  * -----
- * Last Modified: 31 Dec 2021 21:10:11
+ * Last Modified: 13 Jan 2022 11:05:23
  * Modified By: und3fined (me@und3fined.com)
  * -----
  * Copyright (c) 2021 und3fined.com
@@ -37,6 +37,17 @@ exports.getBeforeSendExtraInfoSpec = () => {
   ) {
     extraInfoSpec.push("extraHeaders");
   }
+  return extraInfoSpec;
+}
+
+exports.getHeaderReceivedExtraInfoSpec = () => {
+  const extraInfoSpec = ["blocking", "responseHeaders"];
+  if (
+    chrome.webRequest.OnBeforeSendHeadersOptions.hasOwnProperty("EXTRA_HEADERS")
+  ) {
+    extraInfoSpec.push("extraHeaders");
+  }
+
   return extraInfoSpec;
 }
 

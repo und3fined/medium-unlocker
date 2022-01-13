@@ -4,7 +4,7 @@
  * File Created: 22 Dec 2021 14:17:58
  * Author: und3fined (me@und3fined.com)
  * -----
- * Last Modified: 12 Jan 2022 23:42:22
+ * Last Modified: 13 Jan 2022 11:08:40
  * Modified By: und3fined (me@und3fined.com)
  * -----
  * Copyright (c) 2021 und3fined.com
@@ -14,6 +14,7 @@ const {
   generateUID,
   generateSID,
   getBeforeSendExtraInfoSpec,
+  getHeaderReceivedExtraInfoSpec,
   getHeaders
 } = require("./utils");
 
@@ -95,5 +96,5 @@ chrome.webRequest.onBeforeSendHeaders.addListener(
 chrome.webRequest.onHeadersReceived.addListener(
   handleResponse,
   { urls: domainList },
-  ["blocking", "responseHeaders"]
+  getHeaderReceivedExtraInfoSpec()
 );
