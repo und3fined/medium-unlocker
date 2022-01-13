@@ -4,14 +4,14 @@
  * File Created: 19 Nov 2021 19:34:40
  * Author: und3fined (me@und3fined.com)
  * -----
- * Last Modified: 01 Jan 2022 13:56:05
+ * Last Modified: 13 Jan 2022 10:34:40
  * Modified By: und3fined (me@und3fined.com)
  * -----
  * Copyright (c) 2021 und3fined.com
  */
 import App from "./App.svelte";
 
-const mediumUnlockerId = "mediumUnlocker";
+const mediumUnlockerId = "medium-unlocker";
 const unlockerElm = document.getElementById(mediumUnlockerId);
 
 if (!unlockerElm) {
@@ -21,7 +21,7 @@ if (!unlockerElm) {
 }
 
 const app = new App({
-  target: unlockerElm,
+  target: document.querySelector(`#${mediumUnlockerId}`),
   props: {
     name: 'Medium Unlocker'
   }
