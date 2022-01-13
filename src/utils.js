@@ -4,7 +4,7 @@
  * File Created: 23 Dec 2021 11:12:59
  * Author: und3fined (me@und3fined.com)
  * -----
- * Last Modified: 13 Jan 2022 11:05:23
+ * Last Modified: 13 Jan 2022 11:26:31
  * Modified By: und3fined (me@und3fined.com)
  * -----
  * Copyright (c) 2021 und3fined.com
@@ -43,7 +43,7 @@ exports.getBeforeSendExtraInfoSpec = () => {
 exports.getHeaderReceivedExtraInfoSpec = () => {
   const extraInfoSpec = ["blocking", "responseHeaders"];
   if (
-    chrome.webRequest.OnBeforeSendHeadersOptions.hasOwnProperty("EXTRA_HEADERS")
+    chrome.webRequest.OnHeadersReceivedOptions.hasOwnProperty("EXTRA_HEADERS")
   ) {
     extraInfoSpec.push("extraHeaders");
   }
