@@ -4,7 +4,7 @@
  * File Created: 22 Dec 2021 14:17:58
  * Author: und3fined (me@und3fined.com)
  * -----
- * Last Modified: 14 Jan 2022 16:04:02
+ * Last Modified: 14 Jan 2022 16:05:09
  * Modified By: und3fined (me@und3fined.com)
  * -----
  * Copyright (c) 2021 und3fined.com
@@ -116,10 +116,6 @@ function handleBodyResponse({ requestId, url }) {
         let guestId = new RegExp(`${parseContent[2]}`, 'g')
         content = content.replace(guestId, userId);
       }
-    }
-
-    if (userId && needPatch.includes(requestId)) {
-      console.info('content', content)
     }
 
     filter.write(encoder.encode(content));
