@@ -4,7 +4,7 @@
  * File Created: 22 Dec 2021 14:17:58
  * Author: und3fined (me@und3fined.com)
  * -----
- * Last Modified: 14 Jan 2022 16:13:40
+ * Last Modified: 14 Jan 2022 16:35:52
  * Modified By: und3fined (me@und3fined.com)
  * -----
  * Copyright (c) 2021 und3fined.com
@@ -17,6 +17,8 @@ const {
   getHeaderReceivedExtraInfoSpec,
   getHeaders
 } = require("./utils");
+
+const {initChrome} = require('./chrome');
 
 const mediumGraphql = "/_/graphql";
 const postDetailType = ["PostViewerEdgeContentQuery", "PostHandler"];
@@ -140,4 +142,6 @@ if (typeof browser !== 'undefined') {  // firefox detector
     { urls: domainList },
     ["blocking"]
   );
-};
+} else {
+  initChrome()
+}
