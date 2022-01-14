@@ -4,7 +4,7 @@
  * File Created: 22 Dec 2021 14:17:58
  * Author: und3fined (me@und3fined.com)
  * -----
- * Last Modified: 14 Jan 2022 16:05:09
+ * Last Modified: 14 Jan 2022 16:13:40
  * Modified By: und3fined (me@und3fined.com)
  * -----
  * Copyright (c) 2021 und3fined.com
@@ -84,8 +84,6 @@ function handleResponse({ requestId, responseHeaders }) {
 }
 
 function handleBodyResponse({ requestId, url }) {
-  if (typeof browser === 'undefined') return {}; // firefox detector
-
   if (url.endsWith(mediumGraphql) === false) {
     return {};
   }
@@ -135,8 +133,11 @@ chrome.webRequest.onHeadersReceived.addListener(
   getHeaderReceivedExtraInfoSpec()
 );
 
-chrome.webRequest.onBeforeRequest.addListener(
-  handleBodyResponse,
-  { urls: domainList },
-  ["blocking"]
-);
+
+if (typeof browser !== 'undefined') {  // firefox detector
+  chrome.webRequest.onBeforeRequest.addListener(
+    handleBodyResponse,
+    { urls: domainList },
+    ["blocking"]
+  );
+};
