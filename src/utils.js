@@ -4,7 +4,7 @@
  * File Created: 23 Dec 2021 11:12:59
  * Author: und3fined (me@und3fined.com)
  * -----
- * Last Modified: 13 Jan 2022 11:26:31
+ * Last Modified: 14 Jan 2022 19:34:35
  * Modified By: und3fined (me@und3fined.com)
  * -----
  * Copyright (c) 2021 und3fined.com
@@ -57,4 +57,8 @@ exports.getHeaders = (headers, headerName, condition) => {
 
 exports.hasElm = (elm) => {
   return !!document.getElementById(elm);
+}
+
+exports.getRealObjectKey = (obj, key) => {
+  return Object.keys(obj).find(name => name.toLowerCase() === key)
 }

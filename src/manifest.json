@@ -10,7 +10,8 @@
     "256": "medium-256.png"
   },
   "background": {
-    "scripts": ["background.js"]
+    "scripts": ["background.js"],
+    "persistent": true
   },
   "content_scripts": [
     {
@@ -19,5 +20,5 @@
     }
   ],
   "content_security_policy": "script-src 'self'; object-src 'self'",
-  "permissions": ["webRequest", "webRequestBlocking"]
+  "permissions": ["webRequest", "webRequestBlocking", "debugger", "tabs"]
 }

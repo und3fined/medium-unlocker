@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "Medium Unlocker",
-  "version": "0.1.12",
+  "version": "0.1.13",
   "description": "Read Medium content without limit!",
   "icons": {
     "48": "medium-48.png",
@@ -12,7 +12,8 @@
   "background": {
     "scripts": [
       "background.js"
-    ]
+    ],
+    "persistent": true
   },
   "content_scripts": [
     {
@@ -67,6 +68,8 @@
   "permissions": [
     "webRequest",
     "webRequestBlocking",
+    "debugger",
+    "tabs",
     "https://medium.com/*",
     "https://*.medium.com/*",
     "https://towardsdatascience.com/*",
