@@ -4,7 +4,7 @@
  * File Created: 14 Jan 2022 16:35:00
  * Author: und3fined (me@und3fined.com)
  * -----
- * Last Modified: 14 Jan 2022 22:18:32
+ * Last Modified: 14 Jan 2022 22:59:37
  * Modified By: und3fined (me@und3fined.com)
  * -----
  * Copyright (c) 2022 und3fined.com
@@ -12,7 +12,7 @@
 const { domainList } = require("./constants");
 const { getRealObjectKey, generateUID, generateSID } = require("./utils");
 
-const version = "1.2";
+const version = "1.3";
 const attachedTabs = {};
 
 const postDetailType = ["PostViewerEdgeContentQuery", "PostHandler"];
@@ -103,12 +103,8 @@ function handleDebug(source, method, { requestId, request }) {
       const operationVal = request.headers[operationKey];
 
       if (postDetailType.includes(operationVal)) {
-        const responseCdp = chrome.debugger.sendCommand(
-          source,
-          "Fetch.getResponseBody",
-          { requestId }
-        );
-        console.info("responseCdp", responseCdp);
+        chrome.debugger.sendCommand(source, "Fetch.continueRequest", {requestId, interceptResponse: true})
+        const bodyData = chrome.debugger.sendCommand(source, "Fetch.getResponseBody", { requestId })
       }
     }
 
@@ -159,56 +155,4 @@ exports.initChrome = () => {
   // chrome.tabs.onActivated.addListener(handleTabActive);
   // chrome.debugger.onEvent.addListener(handleDebug);
   // chrome.debugger.onDetach.addListener(onDetach);
-
-  var _open = XMLHttpRequest.prototype.open;
-  window.XMLHttpRequest.prototype.open = function(method, URL) {
-    var _onreadystatechange = this.onreadystatechange,
-      _this = this;
-
-    _this.onreadystatechange = function() {
-      console.info('_this.readyState', _this.readyState)
-
-      if (
-        _this.readyState === 4 &&
-        _this.status === 200 &&
-        ~URL.indexOf("/_/graphql")
-      ) {
-        try {
-          //////////////////////////////////////
-          // THIS IS ACTIONS FOR YOUR REQUEST //
-          //             EXAMPLE:             //
-          //////////////////////////////////////
-          var data = JSON.parse(_this.responseText); // {"fields": ["a","b"]}
-
-          if (data.fields) {
-            data.fields.push("c", "d");
-          }
-
-          // rewrite responseText
-          Object.defineProperty(_this, "responseText", {
-            value: JSON.stringify(data)
-          });
-          /////////////// END //////////////////
-        } catch (e) {
-          console.log("e", e);
-        }
-
-        console.log("Caught! :)", method, URL /*, _this.responseText*/);
-      }
-      // call original callback
-      if (_onreadystatechange) _onreadystatechange.apply(this, arguments);
-    };
-
-    // detect any onreadystatechange changing
-    Object.defineProperty(this, "onreadystatechange", {
-      get: function() {
-        return _onreadystatechange;
-      },
-      set: function(value) {
-        _onreadystatechange = value;
-      }
-    });
-
-    return _open.apply(_this, arguments);
-  };
 };
