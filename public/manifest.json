@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "Medium Unlocker",
-  "version": "0.1.14",
+  "version": "0.1.15",
   "description": "Read Medium content without limit!",
   "icons": {
     "48": "medium-48.png",
@@ -57,7 +57,8 @@
         "https://500ish.com/*",
         "https://faun.pub/*",
         "https://towardsdev.com/*",
-        "https://javascript.plainenglish.io/*"
+        "https://javascript.plainenglish.io/*",
+        "https://writingcooperative.com/*"
       ],
       "js": [
         "content.js"
@@ -107,6 +108,7 @@
     "https://500ish.com/*",
     "https://faun.pub/*",
     "https://towardsdev.com/*",
-    "https://javascript.plainenglish.io/*"
+    "https://javascript.plainenglish.io/*",
+    "https://writingcooperative.com/*"
   ]
 }
