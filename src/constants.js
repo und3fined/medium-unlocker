@@ -61,5 +61,6 @@ exports.domainList = [
   "https://500ish.com/*",
   "https://faun.pub/*",
   "https://towardsdev.com/*",
-  "https://javascript.plainenglish.io/*"
+  "https://javascript.plainenglish.io/*",
+  "https://writingcooperative.com"
 ];
