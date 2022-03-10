@@ -108,3 +108,4 @@ public/LICENSE
 .vscode
 **/*.zip
 public/background.js.map
+yarn.lock
