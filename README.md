@@ -7,7 +7,7 @@
   <a href="https://chrome.google.com/webstore/detail/heikhhbkgpfclbhidmjebagbmnkcmkfk" target="_blank">
     <img width="178" height="48" src="https://github.com/und3fined/medium-unlocker/blob/main/badges/Chrome.png?raw=true">
   </a>
-  <a href="https://microsoftedge.microsoft.com/addons/detail/medium-unlocker/fdnjgkpbbjgmolfhobejeoglagepngpe" target="_blank">
+  <a href="https://github.com/und3fined/medium-unlocker/wiki/Install-extension-for-Chromium-(base)-browser" target="_blank">
     <img width="186" height="48" src="https://github.com/und3fined/medium-unlocker/blob/main/badges/Edge.png?raw=true">
   </a>
 </p>
