@@ -14,6 +14,7 @@
 
 Read Medium content without limit! Aka replacer for Medium Unlimited.
 
+- Medium Unlocker will not receive new updates. Go to [Wiki](https://github.com/und3fined/medium-unlocker/wiki/Install-extension-for-Chromium-(base)-browser#install-extension-for-ms-edge) get tips install extension on MS Edge
 
 ### Get more information
 
