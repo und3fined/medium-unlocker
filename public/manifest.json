@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "Medium Unlocker",
-  "version": "0.1.19",
+  "version": "0.1.20",
   "description": "Read Medium content without limit!",
   "icons": {
     "48": "medium-48.png",
@@ -74,6 +74,7 @@
         "https://eand.co/*",
         "https://engineering.talkdesk.com/*",
         "https://levelupprogramming.net/*",
+        "https://marcbalmer.ch/*",
         "https://medium.datadriveninvestor.com/*",
         "https://netflixtechblog.com/*",
         "https://pub.towardsai.net/*",
@@ -148,6 +149,7 @@
     "https://eand.co/*",
     "https://engineering.talkdesk.com/*",
     "https://levelupprogramming.net/*",
+    "https://marcbalmer.ch/*",
     "https://medium.datadriveninvestor.com/*",
     "https://netflixtechblog.com/*",
     "https://pub.towardsai.net/*",
