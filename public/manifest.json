@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "Medium Unlocker",
-  "version": "0.1.20",
+  "version": "0.1.21",
   "description": "Read Medium content without limit!",
   "icons": {
     "48": "medium-48.png",
@@ -73,6 +73,7 @@
         "https://bytes.grubhub.com/*",
         "https://eand.co/*",
         "https://engineering.talkdesk.com/*",
+        "https://infosecwriteups.com/*",
         "https://levelupprogramming.net/*",
         "https://marcbalmer.ch/*",
         "https://medium.datadriveninvestor.com/*",
@@ -148,6 +149,7 @@
     "https://bytes.grubhub.com/*",
     "https://eand.co/*",
     "https://engineering.talkdesk.com/*",
+    "https://infosecwriteups.com/*",
     "https://levelupprogramming.net/*",
     "https://marcbalmer.ch/*",
     "https://medium.datadriveninvestor.com/*",
