@@ -24,6 +24,7 @@ exports.registerWall = 'regwall-heading';
 exports.domainList = [
   "https://medium.com/*",
   "https://*.medium.com/*",
+  "https://towardsaws.com/*",
   "https://towardsdatascience.com/*",
   "https://hackernoon.com/*",
   "https://medium.freecodecamp.org/*",
