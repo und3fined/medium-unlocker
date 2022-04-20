@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "Medium Unlocker",
-  "version": "0.1.21",
+  "version": "0.1.22",
   "description": "Read Medium content without limit!",
   "icons": {
     "48": "medium-48.png",
@@ -20,6 +20,7 @@
       "matches": [
         "https://medium.com/*",
         "https://*.medium.com/*",
+        "https://towardsaws.com/*",
         "https://towardsdatascience.com/*",
         "https://hackernoon.com/*",
         "https://medium.freecodecamp.org/*",
@@ -96,6 +97,7 @@
     "webRequestBlocking",
     "https://medium.com/*",
     "https://*.medium.com/*",
+    "https://towardsaws.com/*",
     "https://towardsdatascience.com/*",
     "https://hackernoon.com/*",
     "https://medium.freecodecamp.org/*",
