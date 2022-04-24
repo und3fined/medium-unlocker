@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "Medium Unlocker",
-  "version": "0.1.22",
+  "version": "0.1.23",
   "description": "Read Medium content without limit!",
   "icons": {
     "48": "medium-48.png",
@@ -84,7 +84,8 @@
         "https://techuisite.com/*",
         "https://themakingofamillionaire.com/*",
         "https://unbounded.io/*",
-        "https://www.inbitcoinwetrust.net/*"
+        "https://www.inbitcoinwetrust.net/*",
+        "https://blog.dancounsell.com/*"
       ],
       "js": [
         "content.js"
@@ -161,6 +162,7 @@
     "https://techuisite.com/*",
     "https://themakingofamillionaire.com/*",
     "https://unbounded.io/*",
-    "https://www.inbitcoinwetrust.net/*"
+    "https://www.inbitcoinwetrust.net/*",
+    "https://blog.dancounsell.com/*"
   ]
 }

@@ -89,6 +89,7 @@ exports.domainList = [
   'https://themakingofamillionaire.com/*',
   'https://unbounded.io/*',
   'https://www.inbitcoinwetrust.net/*',
+  'https://blog.dancounsell.com/*',
 ];
 
 
