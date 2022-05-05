@@ -64,6 +64,7 @@ exports.domainList = [
   "https://towardsdev.com/*",
   "https://writingcooperative.com/*",
   'https://andrewzuo.com/*',
+  'https://awstip.com/*',
   'https://baos.pub/*',
   'https://*.plainenglish.io/*',
   'https://betterhumans.pub/*',
