@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "Medium Unlocker",
-  "version": "0.1.23",
+  "version": "0.1.24",
   "description": "Read Medium content without limit!",
   "icons": {
     "48": "medium-48.png",
@@ -60,6 +60,7 @@
         "https://towardsdev.com/*",
         "https://writingcooperative.com/*",
         "https://andrewzuo.com/*",
+        "https://awstip.com/*",
         "https://baos.pub/*",
         "https://*.plainenglish.io/*",
         "https://betterhumans.pub/*",
@@ -138,6 +139,7 @@
     "https://towardsdev.com/*",
     "https://writingcooperative.com/*",
     "https://andrewzuo.com/*",
+    "https://awstip.com/*",
     "https://baos.pub/*",
     "https://*.plainenglish.io/*",
     "https://betterhumans.pub/*",
