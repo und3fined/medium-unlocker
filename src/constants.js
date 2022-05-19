@@ -77,6 +77,7 @@ exports.domainList = [
   'https://blog.securityevaluators.com/*',
   'https://bootcamp.uxdesign.cc/*',
   'https://bytes.grubhub.com/*',
+  'https://coinsbench.com/*',
   'https://eand.co/*',
   'https://engineering.talkdesk.com/*',
   'https://infosecwriteups.com/*',
