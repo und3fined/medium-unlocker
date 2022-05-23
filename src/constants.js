@@ -86,6 +86,7 @@ exports.domainList = [
   'https://medium.datadriveninvestor.com/*',
   'https://netflixtechblog.com/*',
   'https://pub.towardsai.net/*',
+  'https://systemweakness.com/*',
   'https://tech.olx.com/*',
   'https://techuisite.com/*',
   'https://themakingofamillionaire.com/*',
