@@ -93,6 +93,7 @@ exports.domainList = [
   'https://unbounded.io/*',
   'https://www.inbitcoinwetrust.net/*',
   'https://blog.dancounsell.com/*',
+  'https://experiencestack.co/*',
 ];
 
 
