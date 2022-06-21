@@ -69,6 +69,7 @@ exports.domainList = [
   'https://*.plainenglish.io/*',
   'https://betterhumans.pub/*',
   'https://bettermarketing.pub/*',
+  'https://blog.angulartraining.com/*',
   'https://blog.codegiant.io/*',
   'https://blog.coffeeapplied.com/*',
   'https://blog.devgenius.io/*',
