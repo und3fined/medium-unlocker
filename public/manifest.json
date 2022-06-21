@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "Medium Unlocker",
-  "version": "0.1.28",
+  "version": "0.1.29",
   "description": "Read Medium content without limit!",
   "icons": {
     "48": "medium-48.png",
@@ -65,6 +65,7 @@
         "https://*.plainenglish.io/*",
         "https://betterhumans.pub/*",
         "https://bettermarketing.pub/*",
+        "https://blog.angulartraining.com/*",
         "https://blog.codegiant.io/*",
         "https://blog.coffeeapplied.com/*",
         "https://blog.devgenius.io/*",
@@ -147,6 +148,7 @@
     "https://*.plainenglish.io/*",
     "https://betterhumans.pub/*",
     "https://bettermarketing.pub/*",
+    "https://blog.angulartraining.com/*",
     "https://blog.codegiant.io/*",
     "https://blog.coffeeapplied.com/*",
     "https://blog.devgenius.io/*",
