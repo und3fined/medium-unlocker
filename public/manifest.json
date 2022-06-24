@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "Medium Unlocker",
-  "version": "0.1.29",
+  "version": "0.1.30",
   "description": "Read Medium content without limit!",
   "icons": {
     "48": "medium-48.png",
@@ -74,6 +74,7 @@
         "https://blog.securityevaluators.com/*",
         "https://bootcamp.uxdesign.cc/*",
         "https://bytes.grubhub.com/*",
+        "https://code.likeagirl.io/*",
         "https://coinsbench.com/*",
         "https://eand.co/*",
         "https://engineering.talkdesk.com/*",
@@ -157,6 +158,7 @@
     "https://blog.securityevaluators.com/*",
     "https://bootcamp.uxdesign.cc/*",
     "https://bytes.grubhub.com/*",
+    "https://code.likeagirl.io/*",
     "https://coinsbench.com/*",
     "https://eand.co/*",
     "https://engineering.talkdesk.com/*",
