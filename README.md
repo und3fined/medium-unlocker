@@ -10,6 +10,10 @@
   <a href="https://github.com/und3fined/medium-unlocker/wiki/Install-extension-for-Chromium-(base)-browser#install-extension-for-ms-edge" target="_blank">
     <img width="186" height="48" src="https://github.com/und3fined/medium-unlocker/blob/main/badges/Edge.png?raw=true">
   </a>
+  
+  <a href="https://www.buymeacoffee.com/und3fined" target="_blank">
+    <img height="48" src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=&slug=und3fined&button_colour=101110&font_colour=ffffff&font_family=Cookie&outline_colour=ffffff&coffee_colour=FFDD00" />
+    </a>
 </p>
 
 Read Medium content without limit! Aka replacer for Medium Unlimited.
