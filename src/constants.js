@@ -93,6 +93,7 @@ exports.domainList = [
   'https://techuisite.com/*',
   'https://themakingofamillionaire.com/*',
   'https://unbounded.io/*',
+  'https://wire.insiderfinance.io/*',
   'https://www.inbitcoinwetrust.net/*',
   'https://blog.dancounsell.com/*',
   'https://experiencestack.co/*',
