@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "Medium Unlocker",
-  "version": "0.1.32",
+  "version": "0.1.33",
   "description": "Read Medium content without limit!",
   "icons": {
     "48": "medium-48.png",
@@ -92,8 +92,7 @@
         "https://wire.insiderfinance.io/*",
         "https://www.inbitcoinwetrust.net/*",
         "https://blog.dancounsell.com/*",
-        "https://experiencestack.co/*",
-        "https://medium.datadriveninvestor.com/*"
+        "https://experiencestack.co/*"
       ],
       "js": [
         "content.js"
@@ -178,7 +177,6 @@
     "https://wire.insiderfinance.io/*",
     "https://www.inbitcoinwetrust.net/*",
     "https://blog.dancounsell.com/*",
-    "https://experiencestack.co/*",
-    "https://medium.datadriveninvestor.com/*"
+    "https://experiencestack.co/*"
   ]
 }
