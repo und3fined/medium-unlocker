@@ -4,7 +4,7 @@
  * File Created: 22 Dec 2021 14:17:58
  * Author: und3fined (me@und3fined.com)
  * -----
- * Last Modified: 27 Sep 2022 10:54:28
+ * Last Modified: 27 Sep 2022 14:05:20
  * Modified By: und3fined (me@und3fined.com)
  * -----
  * Copyright (c) 2021 und3fined.com
@@ -21,7 +21,7 @@ const {
 const {initChrome} = require('./chrome');
 
 const mediumGraphql = "/_/graphql";
-const postDetailType = ["PostViewerEdgeContentQuery", "PostHandler", "PostPageQuery"];
+const postDetailType = ["PostViewerEdgeContentQuery", "PostHandler", "PostPageQuery", "PostPageMeterQuery"];
 
 let needPatch = [];
 let userId = '';

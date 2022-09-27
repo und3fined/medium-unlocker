@@ -4,7 +4,7 @@
  | File Created: 31 Dec 2021 20:33:17
  | Author: und3fined (me@und3fined.com)
  | -----
- | Last Modified: 27 Sep 2022 11:01:01
+ | Last Modified: 27 Sep 2022 14:07:44
  | Modified By: und3fined (me@und3fined.com)
  | -----
  | Copyright (c) 2021 und3fined.com
@@ -17,9 +17,9 @@
   export let name;
 
   onMount(() => {
-    const mediumMeterElm = document.querySelector(`article.meteredContent > div > div`)
+    const mediumMeterElm = document.querySelector(`article.meteredContent > div > div`);
 
-    if (mediumMeterElm && mediumMeterElm.innerText.includes('free member-only stories left this month.')) {
+    if (mediumMeterElm && mediumMeterElm.innerText.includes('free member-only stories left this month')) {
       mediumMeterElm.style.display = 'none';
     }
 
