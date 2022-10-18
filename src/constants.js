@@ -92,6 +92,7 @@ exports.domainList = [
   'https://tech.olx.com/*',
   'https://techuisite.com/*',
   'https://themakingofamillionaire.com/*',
+  'https://trading-data-analysis.pro/*',
   'https://unbounded.io/*',
   'https://wire.insiderfinance.io/*',
   'https://www.inbitcoinwetrust.net/*',
