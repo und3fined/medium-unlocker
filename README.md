@@ -4,7 +4,7 @@
   <a href="https://addons.mozilla.org/firefox/addon/medium-unlocker" target="_blank">
     <img width="149" height="48" src="https://github.com/und3fined/medium-unlocker/blob/main/badges/Firefox.png?raw=true">
   </a>
-  <a href="https://chrome.google.com/webstore/detail/heikhhbkgpfclbhidmjebagbmnkcmkfk" target="_blank">
+  <a href="https://github.com/und3fined/medium-unlocker/wiki/Install-extension-for-Chromium-(base)-browser" target="_blank">
     <img width="178" height="48" src="https://github.com/und3fined/medium-unlocker/blob/main/badges/Chrome.png?raw=true">
   </a>
   <a href="https://github.com/und3fined/medium-unlocker/wiki/Install-extension-for-Chromium-(base)-browser#install-extension-for-ms-edge" target="_blank">
@@ -20,6 +20,7 @@ Read Medium content without limit! Aka replacer for Medium Unlimited.
 
 ### Note
 
+- Google remove Medium Unlocker in Chrome Extensions Store. Please check [Wiki](https://github.com/und3fined/medium-unlocker/wiki) for manual install via zip file
 - Medium Unlocker will not receive new updates for MS Edge. Go to [Wiki](https://github.com/und3fined/medium-unlocker/wiki/Install-extension-for-Chromium-(base)-browser#install-extension-for-ms-edge) get tips install extension on MS Edge
 
 ### Get more information
