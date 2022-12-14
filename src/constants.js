@@ -68,6 +68,7 @@ exports.domainList = [
   'https://awstip.com/*',
   'https://baos.pub/*',
   'https://*.plainenglish.io/*',
+  'https://betterappsec.com/*',
   'https://betterhumans.pub/*',
   'https://bettermarketing.pub/*',
   'https://blog.angulartraining.com/*',
