@@ -88,6 +88,7 @@ exports.domainList = [
   'https://levelupprogramming.net/*',
   'https://marcbalmer.ch/*',
   'https://medium.datadriveninvestor.com/*',
+  'https://medium.matcha.fyi/*',
   'https://netflixtechblog.com/*',
   'https://pub.towardsai.net/*',
   'https://systemweakness.com/*',
