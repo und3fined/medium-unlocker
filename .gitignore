@@ -109,3 +109,5 @@ public/LICENSE
 **/*.zip
 public/background.js.map
 yarn.lock
+/public/.web-extension-id
+*.xpi

@@ -12,7 +12,7 @@
     "preversion": "yarn build",
     "postversion": "npm run manifest --scripts-prepend-node-path && npm run git:exec --scripts-prepend-node-path",
     "xpi:build": "web-ext build --overwrite-dest",
-    "xpi:sign": "web-ext sign --api-key=$AMO_JWT_ISSUER --api-secret=$AMO_JWT_SECRET"
+    "xpi:sign": "web-ext sign --channel=unlisted --api-key=$AMO_JWT_ISSUER --api-secret=$AMO_JWT_SECRET --id=\"{b5ff5c8d-d1cd-49f5-aba0-b505264062b5}\""
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^17.0.0",
