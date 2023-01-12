@@ -1,6 +1,6 @@
 {
   "name": "medium-unlocker",
-  "version": "0.1.38",
+  "version": "0.1.39",
   "private": true,
   "scripts": {
     "build": "rollup -c",
@@ -10,7 +10,9 @@
     "git:push": "git push --follow-tags",
     "git:exec": "npm run git:tag --scripts-prepend-node-path && npm run git:push --scripts-prepend-node-path",
     "preversion": "yarn build",
-    "postversion": "npm run manifest --scripts-prepend-node-path && npm run git:exec --scripts-prepend-node-path"
+    "postversion": "npm run manifest --scripts-prepend-node-path && npm run git:exec --scripts-prepend-node-path",
+    "xpi:build": "web-ext build --overwrite-dest",
+    "xpi:sign": "web-ext sign --api-key=$AMO_JWT_ISSUER --api-secret=$AMO_JWT_SECRET --id=\"{b5ff5c8d-d1cd-49f5-aba0-b505264062b5}\""
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^17.0.0",
@@ -20,9 +22,17 @@
     "rollup-plugin-livereload": "^2.0.0",
     "rollup-plugin-svelte": "^7.0.0",
     "rollup-plugin-terser": "^7.0.0",
-    "svelte": "^3.0.0"
+    "svelte": "^3.0.0",
+    "web-ext": "^7.4.0"
   },
   "dependencies": {
     "sirv-cli": "^1.0.0"
+  },
+  "webExt": {
+    "sourceDir": "public",
+    "artifactsDir": "public",
+    "ignoreFiles": [
+      "*.map"
+    ]
   }
 }
