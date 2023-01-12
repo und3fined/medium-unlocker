@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "Medium Unlocker",
-  "version": "0.1.37",
+  "version": "0.1.38",
   "description": "Read Medium content without limit!",
   "icons": {
     "48": "medium-48.png",
@@ -73,6 +73,7 @@
         "https://blog.devgenius.io/*",
         "https://blog.kotlin-academy.com/*",
         "https://blog.kubernauts.io/*",
+        "https://blog.securitybreak.io/*",
         "https://blog.securityevaluators.com/*",
         "https://bootcamp.uxdesign.cc/*",
         "https://bytes.grubhub.com/*",
@@ -96,7 +97,8 @@
         "https://wire.insiderfinance.io/*",
         "https://www.inbitcoinwetrust.net/*",
         "https://blog.dancounsell.com/*",
-        "https://experiencestack.co/*"
+        "https://experiencestack.co/*",
+        "https://golang.thisweekin.io/*"
       ],
       "js": [
         "content.js"
@@ -162,6 +164,7 @@
     "https://blog.devgenius.io/*",
     "https://blog.kotlin-academy.com/*",
     "https://blog.kubernauts.io/*",
+    "https://blog.securitybreak.io/*",
     "https://blog.securityevaluators.com/*",
     "https://bootcamp.uxdesign.cc/*",
     "https://bytes.grubhub.com/*",
@@ -185,6 +188,7 @@
     "https://wire.insiderfinance.io/*",
     "https://www.inbitcoinwetrust.net/*",
     "https://blog.dancounsell.com/*",
-    "https://experiencestack.co/*"
+    "https://experiencestack.co/*",
+    "https://golang.thisweekin.io/*"
   ]
 }
