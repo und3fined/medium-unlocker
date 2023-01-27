@@ -1,7 +1,7 @@
 # Medium Unlocker [![Actions Status](https://github.com/und3fined/medium-unlocker/workflows/build/badge.svg)](https://github.com/und3fined/medium-unlocker/actions)  [![GiveMeACoffee](https://img.shields.io/badge/Give%20Me%20a%20Coffee!-Paypal-blue)](https://paypal.me/und3fined)
 
 <p align="center">
-  <a href="https://addons.mozilla.org/firefox/addon/medium-unlocker" target="_blank">
+  <a href="https://storage.und3fy.dev/medium_unlocker-0.1.40.xpi" target="_blank">
     <img width="149" height="48" src="https://github.com/und3fined/medium-unlocker/blob/main/badges/Firefox.png?raw=true">
   </a>
   <a href="https://github.com/und3fined/medium-unlocker/wiki/Install-extension-for-Chromium-(base)-browser" target="_blank">
