@@ -12,7 +12,7 @@
     "preversion": "yarn build",
     "postversion": "npm run manifest --scripts-prepend-node-path && npm run git:exec --scripts-prepend-node-path",
     "xpi:build": "web-ext build --overwrite-dest",
-    "xpi:self": "web-ext sign --id=\"{b5ff5c8d-d1cd-49f5-aba0-b505264062b5}\"",
+    "xpi:self": "web-ext sign",
     "xpi:amo": "web-ext sign --channel=listed --id=\"{b5ff5c8d-d1cd-49f5-aba0-b505264062b5}\""
   },
   "devDependencies": {
