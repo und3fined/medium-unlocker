@@ -18,6 +18,11 @@
 
 Read Medium content without limit! Aka replacer for Medium Unlimited.
 
+### How to install
+
+- Firefox -> [Direct install](https://storage.und3fy.dev/medium_unlocker-0.1.40.xpi)
+- Chrome, Edge or Chromium -> [Check guide](https://github.com/und3fined/medium-unlocker/wiki/Install-extension-for-Chromium-(base)-browser)
+
 ### Note
 
 - Google remove Medium Unlocker in Chrome Extensions Store. Please check [Wiki](https://github.com/und3fined/medium-unlocker/wiki) for manual install via zip file
