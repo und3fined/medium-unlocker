@@ -1,6 +1,6 @@
 {
   "name": "medium-unlocker",
-  "version": "0.1.41",
+  "version": "0.1.42",
   "private": true,
   "scripts": {
     "build": "rollup -c",
