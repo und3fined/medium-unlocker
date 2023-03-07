@@ -79,6 +79,7 @@ exports.domainList = [
   'https://blog.kubernauts.io/*',
   'https://blog.securitybreak.io/*',
   'https://blog.securityevaluators.com/*',
+  'https://blog.startupstash.com/*',
   'https://bootcamp.uxdesign.cc/*',
   'https://bytes.grubhub.com/*',
   'https://code.likeagirl.io/*',
