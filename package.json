@@ -1,6 +1,6 @@
 {
   "name": "medium-unlocker",
-  "version": "0.1.45",
+  "version": "0.1.46",
   "private": true,
   "scripts": {
     "build": "rollup -c",
@@ -13,7 +13,7 @@
     "postversion": "npm run manifest --scripts-prepend-node-path && npm run git:exec --scripts-prepend-node-path",
     "xpi:build": "web-ext build --overwrite-dest",
     "xpi:self": "web-ext sign",
-    "xpi:amo": "web-ext sign --channel=listed --id=\"{b5ff5c8d-d1cd-49f5-aba0-b505264062b5}\""
+    "xpi:amo": "web-ext sign --channel=unlisted --id=\"{b5ff5c8d-d1cd-49f5-aba0-b505264062b5}\""
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^17.0.0",
