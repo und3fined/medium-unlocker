@@ -87,6 +87,7 @@ exports.domainList = [
   'https://eand.co/*',
   'https://engineering.talkdesk.com/*',
   'https://infosecwriteups.com/*',
+  'https://interviewnoodle.com/*',
   'https://levelupprogramming.net/*',
   'https://marcbalmer.ch/*',
   'https://medium.datadriveninvestor.com/*',
