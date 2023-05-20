@@ -4,7 +4,7 @@
  * File Created: 22 Dec 2021 14:22:09
  * Author: und3fined (me@und3fined.com)
  * -----
- * Last Modified: 12 Jan 2023 10:38:05
+ * Last Modified: 20 May 2023 11:28:16
  * Modified By: und3fined (me@und3fined.com)
  * -----
  * Copyright (c) 2021 und3fined.com
@@ -105,7 +105,10 @@ exports.domainList = [
   'https://www.inbitcoinwetrust.net/*',
   'https://blog.dancounsell.com/*',
   'https://experiencestack.co/*',
-  'https://golang.thisweekin.io/*'
+  'https://golang.thisweekin.io/*',
+  'https://medium.datadriveninvestor.com/*',
+  'https://insightsndata.com/*',
+  'https://artificialcorner.com/*'
 ];
 
 
