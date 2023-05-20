@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "Medium Unlocker",
-  "version": "0.1.46",
+  "version": "0.1.47",
   "description": "Read Medium content without limit!",
   "icons": {
     "48": "medium-48.png",
@@ -71,6 +71,7 @@
         "https://blog.codegiant.io/*",
         "https://blog.coffeeapplied.com/*",
         "https://blog.devgenius.io/*",
+        "https://blog.devops.dev/*",
         "https://blog.kotlin-academy.com/*",
         "https://blog.kubernauts.io/*",
         "https://blog.securitybreak.io/*",
@@ -83,6 +84,7 @@
         "https://eand.co/*",
         "https://engineering.talkdesk.com/*",
         "https://infosecwriteups.com/*",
+        "https://interviewnoodle.com/*",
         "https://levelupprogramming.net/*",
         "https://marcbalmer.ch/*",
         "https://medium.datadriveninvestor.com/*",
@@ -99,7 +101,10 @@
         "https://www.inbitcoinwetrust.net/*",
         "https://blog.dancounsell.com/*",
         "https://experiencestack.co/*",
-        "https://golang.thisweekin.io/*"
+        "https://golang.thisweekin.io/*",
+        "https://medium.datadriveninvestor.com/*",
+        "https://insightsndata.com/*",
+        "https://artificialcorner.com/*"
       ],
       "js": [
         "content.js"
@@ -163,6 +168,7 @@
     "https://blog.codegiant.io/*",
     "https://blog.coffeeapplied.com/*",
     "https://blog.devgenius.io/*",
+    "https://blog.devops.dev/*",
     "https://blog.kotlin-academy.com/*",
     "https://blog.kubernauts.io/*",
     "https://blog.securitybreak.io/*",
@@ -175,6 +181,7 @@
     "https://eand.co/*",
     "https://engineering.talkdesk.com/*",
     "https://infosecwriteups.com/*",
+    "https://interviewnoodle.com/*",
     "https://levelupprogramming.net/*",
     "https://marcbalmer.ch/*",
     "https://medium.datadriveninvestor.com/*",
@@ -191,6 +198,9 @@
     "https://www.inbitcoinwetrust.net/*",
     "https://blog.dancounsell.com/*",
     "https://experiencestack.co/*",
-    "https://golang.thisweekin.io/*"
+    "https://golang.thisweekin.io/*",
+    "https://medium.datadriveninvestor.com/*",
+    "https://insightsndata.com/*",
+    "https://artificialcorner.com/*"
   ]
 }
