@@ -75,6 +75,7 @@ exports.domainList = [
   'https://blog.codegiant.io/*',
   'https://blog.coffeeapplied.com/*',
   'https://blog.devgenius.io/*',
+  'https://blog.devops.dev/*',
   'https://blog.kotlin-academy.com/*',
   'https://blog.kubernauts.io/*',
   'https://blog.securitybreak.io/*',
