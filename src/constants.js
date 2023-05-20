@@ -4,7 +4,7 @@
  * File Created: 22 Dec 2021 14:22:09
  * Author: und3fined (me@und3fined.com)
  * -----
- * Last Modified: 20 May 2023 11:28:16
+ * Last Modified: 20 May 2023 11:36:57
  * Modified By: und3fined (me@und3fined.com)
  * -----
  * Copyright (c) 2021 und3fined.com
@@ -106,7 +106,6 @@ exports.domainList = [
   'https://blog.dancounsell.com/*',
   'https://experiencestack.co/*',
   'https://golang.thisweekin.io/*',
-  'https://medium.datadriveninvestor.com/*',
   'https://insightsndata.com/*',
   'https://artificialcorner.com/*'
 ];
