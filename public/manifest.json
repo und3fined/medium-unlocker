@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "Medium Unlocker",
-  "version": "0.1.47",
+  "version": "0.1.48",
   "description": "Read Medium content without limit!",
   "icons": {
     "48": "medium-48.png",
@@ -102,7 +102,6 @@
         "https://blog.dancounsell.com/*",
         "https://experiencestack.co/*",
         "https://golang.thisweekin.io/*",
-        "https://medium.datadriveninvestor.com/*",
         "https://insightsndata.com/*",
         "https://artificialcorner.com/*"
       ],
@@ -199,7 +198,6 @@
     "https://blog.dancounsell.com/*",
     "https://experiencestack.co/*",
     "https://golang.thisweekin.io/*",
-    "https://medium.datadriveninvestor.com/*",
     "https://insightsndata.com/*",
     "https://artificialcorner.com/*"
   ]
