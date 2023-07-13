@@ -4,8 +4,8 @@
  * File Created: 22 Dec 2021 14:17:58
  * Author: und3fined (me@und3fined.com)
  * -----
- * Last Modified: 27 Sep 2022 14:05:20
- * Modified By: und3fined (me@und3fined.com)
+ * Last Modified: 13 Jul 2023 18:39:42
+ * Modified By: und3fined (me@und3fy.dev)
  * -----
  * Copyright (c) 2021 und3fined.com
  */
@@ -22,6 +22,7 @@ const {initChrome} = require('./chrome');
 
 const mediumGraphql = "/_/graphql";
 const postDetailType = ["PostViewerEdgeContentQuery", "PostHandler", "PostPageQuery", "PostPageMeterQuery"];
+const viewerProfile = ["ViewerQuery"]
 
 let needPatch = [];
 let userId = '';
@@ -34,6 +35,11 @@ function rewriteCookieHeader({ url, requestId, requestHeaders }) {
   const operations = requestHeaders.filter(
     ({ name }) => name.toLowerCase() === "graphql-operation"
   );
+
+  if (operations.length && viewerProfile.includes(operations[0].value)) {
+    needPatch.push(requestId);
+    return { requestHeaders };
+  }
 
 
   if (!operations.length || (operations.length && !postDetailType.includes(operations[0].value))) {
@@ -59,7 +65,7 @@ function rewriteCookieHeader({ url, requestId, requestHeaders }) {
     newCookie = newCookie.replace(
       /sid=(.{0,72});/,
       `sid=${encodeURIComponent(sid)};`
-    );
+    )
     newCookie = newCookie.replace(
       /optimizelyEndUserId=(\w+);/,
       `optimizelyEndUserId=${uid};`
@@ -116,6 +122,24 @@ function handleBodyResponse({ requestId, url }) {
         let guestId = new RegExp(`${parseContent[2]}`, 'g')
         content = content.replace(guestId, userId);
       }
+
+      let nextContent = JSON.parse(content);
+      nextContent = nextContent.map(item => {
+        if (item.data && item.data.post && item.data.post.viewerEdge) {
+          item.data.post.viewerEdge.fullContent.isLockedPreviewOnly = false;
+        }
+
+        if (item.data && item.data.viewer) {
+          item.data.viewer.isSubscriber = true;
+          item.data.viewer.hasPastMemberships = true;
+          item.data.viewer.mediumMemberAt = new Date().getTime();
+          item.data.viewer.isPartnerProgramEnrolled = true;
+        }
+
+        return item;
+      })
+
+      content = JSON.stringify(nextContent);
     }
 
     filter.write(encoder.encode(content));
