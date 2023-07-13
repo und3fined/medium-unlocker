@@ -14,6 +14,10 @@
 
 Read Medium content without limit! Aka replacer for Medium Unlimited.
 
+## NOTICE
+
+### On July 13th, 2023, Medium has updated its platform with a new version. It restricts casual users from viewing full article content. I have attempted to bypass these restrictions but was unsuccessful. Perhaps the story will end here. I will check back again in the near future. Thank you for using this extension!
+
 ### How to install
 
 - Firefox -> [Direct install](https://storage.und3fy.dev/medium_unlocker-0.1.48.xpi)
