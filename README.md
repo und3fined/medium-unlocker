@@ -18,7 +18,7 @@ Read Medium content without limit! Aka replacer for Medium Unlimited.
 
 ### On July 13th, 2023, Medium has updated its platform with a new version. It restricts casual users from viewing full article content. I have attempted to bypass these restrictions but was unsuccessful. Perhaps the story will end here. I will check back again in the near future. Thank you for using this extension!
 
-UPDATE July 24th, 2023. ~~### There is another way to read the entire content. Try saving the article link to getpocket.com~~
+### UPDATE July 24th, 2023. ~~There is another way to read the entire content. Try saving the article link to getpocket.com~~
 
 ### How to install
 
