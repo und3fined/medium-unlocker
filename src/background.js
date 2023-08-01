@@ -4,7 +4,7 @@
  * File Created: 22 Dec 2021 14:17:58
  * Author: und3fined (me@und3fined.com)
  * -----
- * Last Modified: 13 Jul 2023 18:39:42
+ * Last Modified: 13 Jul 2023 20:12:03
  * Modified By: und3fined (me@und3fy.dev)
  * -----
  * Copyright (c) 2021 und3fined.com
@@ -18,17 +18,23 @@ const {
   getHeaders
 } = require("./utils");
 
-const {initChrome} = require('./chrome');
+const { initChrome } = require('./chrome');
 
 const mediumGraphql = "/_/graphql";
-const postDetailType = ["PostViewerEdgeContentQuery", "PostHandler", "PostPageQuery", "PostPageMeterQuery"];
+const postDetailType = ["UserViewerEdge", "CollectionViewerEdge", "usePostPageMeterQuery", "ViewerQuery"];
+
+//["PostViewerEdgeContentQuery", "PostViewerEdgeQuery", "PostHandler", "PostPageQuery", "ViewerQuery", "CollectionViewerEdge", "UserViewerEdge"];
 const viewerProfile = ["ViewerQuery"]
 
 let needPatch = [];
 let userId = '';
 
 function rewriteCookieHeader({ url, requestId, requestHeaders }) {
-  if (url.endsWith(mediumGraphql) === false) {
+  const isHtmlReq = requestHeaders.some(
+    ({ name, value }) => name.toLowerCase() === "accept" && value.includes("html")
+  )
+
+  if (url.endsWith(mediumGraphql) === false && isHtmlReq === false) {
     return { requestHeaders };
   }
 
@@ -36,15 +42,16 @@ function rewriteCookieHeader({ url, requestId, requestHeaders }) {
     ({ name }) => name.toLowerCase() === "graphql-operation"
   );
 
-  if (operations.length && viewerProfile.includes(operations[0].value)) {
-    needPatch.push(requestId);
+  // if (operations.length && viewerProfile.includes(operations[0].value)) {
+  //   needPatch.push(requestId);
+  //   return { requestHeaders };
+  // }
+
+  if ((!operations.length || (operations.length && !postDetailType.includes(operations[0].value))) && !isHtmlReq) {
     return { requestHeaders };
   }
 
-
-  if (!operations.length || (operations.length && !postDetailType.includes(operations[0].value))) {
-    return { requestHeaders };
-  }
+  console.log('x isHtmlReq', isHtmlReq)
 
   needPatch.push(requestId);
 
@@ -52,8 +59,9 @@ function rewriteCookieHeader({ url, requestId, requestHeaders }) {
   const cookieHeader = getHeaders(requestHeaders, "cookie", (a, b) => a === b);
 
   if (cookieHeader.length === 1) {
-    const uid = generateUID();
-    const sid = generateSID();
+    const uid = '3f5b5ea55fcb';
+    const sid = '1:1sUA6NMAE3ZEnXJauKKdzeNEZeFCjdQxyVhKUJoatj7OAzhM42vvaHXRduXz7vn9';
+    const xsrf = '84d8bce13a98';
 
     let newCookie = decodeURIComponent(cookieHeader[0].value);
     const parseCookie = /uid=(\w+);/.exec(newCookie);
@@ -61,15 +69,17 @@ function rewriteCookieHeader({ url, requestId, requestHeaders }) {
       userId = parseCookie[1];
     }
 
+    newCookie = newCookie.replace(/dd_cookie_test(\w+)/, '');
     newCookie = newCookie.replace(/uid=(\w+);/, `uid=${uid};`);
-    newCookie = newCookie.replace(
-      /sid=(.{0,72});/,
-      `sid=${encodeURIComponent(sid)};`
-    )
-    newCookie = newCookie.replace(
-      /optimizelyEndUserId=(\w+);/,
-      `optimizelyEndUserId=${uid};`
-    );
+    newCookie = newCookie.replace(/sid=(.{0,72});/, `sid=${encodeURIComponent(sid)};`);
+    newCookie = newCookie.replace(/xsrf=(\w+);/, `xsrf=${xsrf}`);
+
+    if (!newCookie.includes('xsrf')) {
+      newCookie += `;xsrf=${xsrf}`;
+    }
+
+    // newCookie = newCookie.replace(/optimizelyEndUserId=(\w+);/,`optimizelyEndUserId=${uid};`);
+
     newHeaders.push({ name: "cookie", value: newCookie });
     return { requestHeaders: newHeaders };
   }
@@ -112,7 +122,7 @@ function handleBodyResponse({ requestId, url }) {
     } else {
       for (let i = 0; i < data.length; i++) {
         let stream = (i == data.length - 1) ? false : true;
-        content += decoder.decode(data[i], {stream});
+        content += decoder.decode(data[i], { stream });
       }
     }
 
@@ -122,24 +132,6 @@ function handleBodyResponse({ requestId, url }) {
         let guestId = new RegExp(`${parseContent[2]}`, 'g')
         content = content.replace(guestId, userId);
       }
-
-      let nextContent = JSON.parse(content);
-      nextContent = nextContent.map(item => {
-        if (item.data && item.data.post && item.data.post.viewerEdge) {
-          item.data.post.viewerEdge.fullContent.isLockedPreviewOnly = false;
-        }
-
-        if (item.data && item.data.viewer) {
-          item.data.viewer.isSubscriber = true;
-          item.data.viewer.hasPastMemberships = true;
-          item.data.viewer.mediumMemberAt = new Date().getTime();
-          item.data.viewer.isPartnerProgramEnrolled = true;
-        }
-
-        return item;
-      })
-
-      content = JSON.stringify(nextContent);
     }
 
     filter.write(encoder.encode(content));

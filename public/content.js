@@ -42,6 +42,12 @@ var content = (function () {
     function text(data) {
         return document.createTextNode(data);
     }
+    function attr(node, attribute, value) {
+        if (value == null)
+            node.removeAttribute(attribute);
+        else if (node.getAttribute(attribute) !== value)
+            node.setAttribute(attribute, value);
+    }
     function children(element) {
         return Array.from(element.childNodes);
     }
@@ -296,12 +302,12 @@ var content = (function () {
         dispatch_dev('SvelteDOMRemove', { node });
         detach(node);
     }
-    function set_data_dev(text, data) {
-        data = '' + data;
-        if (text.wholeText === data)
-            return;
-        dispatch_dev('SvelteDOMSetData', { node: text, data });
-        text.data = data;
+    function attr_dev(node, attribute, value) {
+        attr(node, attribute, value);
+        if (value == null)
+            dispatch_dev('SvelteDOMRemoveAttribute', { node, attribute });
+        else
+            dispatch_dev('SvelteDOMSetAttribute', { node, attribute, value });
     }
     function validate_slots(name, slot, keys) {
         for (const slot_key of Object.keys(slot)) {
@@ -366,35 +372,67 @@ var content = (function () {
 
     function create_fragment(ctx) {
     	let div;
-    	let h1;
-    	let t;
+    	let h3;
+    	let t0;
+    	let a0;
+    	let t2;
+    	let a1;
+    	let t4;
+    	let a2;
+    	let u;
 
     	const block = {
     		c: function create() {
     			div = element("div");
-    			h1 = element("h1");
-    			t = text(/*name*/ ctx[0]);
-    			set_style(h1, "visibility", "hidden");
-    			add_location(h1, file, 57, 2, 1892);
+    			h3 = element("h3");
+    			t0 = text("The content unlocked by ");
+    			a0 = element("a");
+    			a0.textContent = "Medium Unlocker";
+    			t2 = text(".\n    Please ");
+    			a1 = element("a");
+    			a1.textContent = "buy for Medium Unlocker a coffee";
+    			t4 = text(" via ");
+    			a2 = element("a");
+    			u = element("u");
+    			u.textContent = "here";
+    			attr_dev(a0, "href", "https://github.com/und3fined/medium-unlocker?ref=medium");
+    			attr_dev(a0, "target", "_blank");
+    			add_location(a0, file, 62, 28, 2008);
+    			attr_dev(a1, "target", "_blank");
+    			attr_dev(a1, "href", "https://ko-fi.com/und3fy?ref=medium");
+    			add_location(a1, file, 63, 11, 2122);
+    			add_location(u, file, 63, 176, 2287);
+    			attr_dev(a2, "target", "_blank");
+    			attr_dev(a2, "href", "https://ko-fi.com/und3fy?ref=medium");
+    			add_location(a2, file, 63, 114, 2225);
+    			add_location(h3, file, 61, 2, 1975);
     			set_style(div, "position", "fixed");
-    			set_style(div, "top", "0");
-    			set_style(div, "right", "0");
-    			set_style(div, "z-index", "9999");
-    			set_style(div, "width", "64px");
-    			set_style(div, "height", "64px");
-    			add_location(div, file, 56, 0, 1811);
+    			set_style(div, "z-index", "1");
+    			set_style(div, "bottom", "0");
+    			set_style(div, "left", "0");
+    			set_style(div, "width", "100%");
+    			set_style(div, "min-height", "32px");
+    			set_style(div, "text-align", "center");
+    			set_style(div, "padding", "8px 12px");
+    			set_style(div, "background", "white");
+    			set_style(div, "border-top", "1px solid rgba(0,0,0,0.2)");
+    			add_location(div, file, 60, 0, 1795);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
-    			append_dev(div, h1);
-    			append_dev(h1, t);
+    			append_dev(div, h3);
+    			append_dev(h3, t0);
+    			append_dev(h3, a0);
+    			append_dev(h3, t2);
+    			append_dev(h3, a1);
+    			append_dev(h3, t4);
+    			append_dev(h3, a2);
+    			append_dev(a2, u);
     		},
-    		p: function update(ctx, [dirty]) {
-    			if (dirty & /*name*/ 1) set_data_dev(t, /*name*/ ctx[0]);
-    		},
+    		p: noop,
     		i: noop,
     		o: noop,
     		d: function destroy(detaching) {
@@ -416,7 +454,6 @@ var content = (function () {
     function instance($$self, $$props, $$invalidate) {
     	let { $$slots: slots = {}, $$scope } = $$props;
     	validate_slots('App', slots, []);
-    	let { name } = $$props;
     	let hidded = false;
 
     	function hideAlert(interval) {
@@ -428,16 +465,16 @@ var content = (function () {
     		};
 
     		const alertContent = mediumMeterElm.innerText;
-    		const hasAlert1 = alertContent.includes('unlimited access');
-    		const hasAlert2 = alertContent.includes('free member-only stories left this month');
+    		const hasAlert1 = alertContent.includes("unlimited access");
+    		const hasAlert2 = alertContent.includes("free member-only stories left this month");
 
     		if (hasAlert1 || hasAlert2) {
-    			const contentP = mediumMeterElm.querySelector('p');
+    			const contentP = mediumMeterElm.querySelector("p");
 
     			if (contentP) {
-    				contentP.innerHTML = 'Your content is unlocked by <strong>Medium Unlocker</strong>.<br /><a target="_blank" href="https://www.buymeacoffee.com/und3fined?ref=medium">Buy for Medium Unlocker a coffee</a> if you like it via <a target="_blank" href="https://www.buymeacoffee.com/und3fined?ref=medium"><u>here</u></a>.';
+    				contentP.innerHTML = 'Your content is unlocked by <strong>Medium Unlocker</strong>.<br /><a target="_blank" href="https://ko-fi.com/und3fy?ref=medium">Buy for Medium Unlocker a coffee</a> if you like it via <a target="_blank" href="https://ko-fi.com/und3fy?ref=medium"><u>here</u></a>.';
     			} else {
-    				mediumMeterElm.style.display = 'none';
+    				mediumMeterElm.style.display = "none";
     			}
 
     			hidded = true;
@@ -462,28 +499,22 @@ var content = (function () {
     		};
     	});
 
-    	const writable_props = ['name'];
+    	const writable_props = [];
 
     	Object.keys($$props).forEach(key => {
     		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== '$$' && key !== 'slot') console.warn(`<App> was created with unknown prop '${key}'`);
     	});
-
-    	$$self.$$set = $$props => {
-    		if ('name' in $$props) $$invalidate(0, name = $$props.name);
-    	};
 
     	$$self.$capture_state = () => ({
     		onMount,
     		memberShipId,
     		registerWall,
     		hasElm,
-    		name,
     		hidded,
     		hideAlert
     	});
 
     	$$self.$inject_state = $$props => {
-    		if ('name' in $$props) $$invalidate(0, name = $$props.name);
     		if ('hidded' in $$props) hidded = $$props.hidded;
     	};
 
@@ -491,13 +522,13 @@ var content = (function () {
     		$$self.$inject_state($$props.$$inject);
     	}
 
-    	return [name];
+    	return [];
     }
 
     class App extends SvelteComponentDev {
     	constructor(options) {
     		super(options);
-    		init(this, options, instance, create_fragment, safe_not_equal, { name: 0 });
+    		init(this, options, instance, create_fragment, safe_not_equal, {});
 
     		dispatch_dev("SvelteRegisterComponent", {
     			component: this,
@@ -505,21 +536,6 @@ var content = (function () {
     			options,
     			id: create_fragment.name
     		});
-
-    		const { ctx } = this.$$;
-    		const props = options.props || {};
-
-    		if (/*name*/ ctx[0] === undefined && !('name' in props)) {
-    			console.warn("<App> was created without expected prop 'name'");
-    		}
-    	}
-
-    	get name() {
-    		throw new Error("<App>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
-    	}
-
-    	set name(value) {
-    		throw new Error("<App>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
     	}
     }
 
