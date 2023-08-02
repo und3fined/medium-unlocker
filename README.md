@@ -16,13 +16,12 @@ Read Medium content without limit! Aka replacer for Medium Unlimited.
 
 ## NOTICE
 
-### On July 13th, 2023, Medium has updated its platform with a new version. It restricts casual users from viewing full article content. I have attempted to bypass these restrictions but was unsuccessful. Perhaps the story will end here. I will check back again in the near future. Thank you for using this extension!
+I have a pre-release version with new way bypass Medium.
 
-### UPDATE July 24th, 2023. ~~There is another way to read the entire content. Try saving the article link to getpocket.com~~
+Download here: https://github.com/und3fined/medium-unlocker/releases/tag/v1.0.0-beta.1
 
 ### How to install
 
-- Firefox -> [Direct install](https://storage.und3fy.dev/medium_unlocker-0.1.48.xpi)
 - Chrome, Edge or Chromium -> [Check guide](https://github.com/und3fined/medium-unlocker/wiki/Install-extension-for-Chromium-(base)-browser)
 
 ### Note
