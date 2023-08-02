@@ -20,6 +20,8 @@ I have a pre-release version with new way bypass Medium.
 
 Download here: https://github.com/und3fined/medium-unlocker/releases/tag/v1.0.0-beta.1
 
+Check more information: https://github.com/und3fined/medium-unlocker/issues/48
+
 ### How to install
 
 - Chrome, Edge or Chromium -> [Check guide](https://github.com/und3fined/medium-unlocker/wiki/Install-extension-for-Chromium-(base)-browser)
